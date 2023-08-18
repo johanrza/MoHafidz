@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - Mohafidz - Monitoring Hafidz</title>
 
-    <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="./icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
-    <link rel="manifest" href="./app.webmanifest">
-    <meta name="msapplication-TileColor" content="#3376b8">
-    <meta name="msapplication-TileImage" content="./icons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#3376b8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png" />
+    <link rel="manifest" href="./app.webmanifest" />
+    <meta name="msapplication-TileColor" content="#3376b8" />
+    <meta name="msapplication-TileImage" content="./icons/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#3376b8" />
 
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./dist/css/libs/datatables/responsive.dataTables.min.css"/>
-    <link rel="stylesheet" href="./dist/css/libs/datatables/dataTables.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="./dist/css/libs/sweetalert2/sweetalert2.min.css"/>
+    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./dist/css/libs/datatables/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="./dist/css/libs/datatables/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="./dist/css/libs/sweetalert2/sweetalert2.min.css" />
 
     <style>
       @import url('https://rsms.me/inter/inter.css');
@@ -752,7 +752,7 @@
                       <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
                       <path d="M16 5l3 3"></path>
                     </svg>
-                    Ubah
+                    Ubah profile santri
                   </button>
                 </div>
               </form>
@@ -770,7 +770,17 @@
                 <small id="sub-modal-title-hafalan">4 Surat</small>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form id="form-hafalan" action="#" method="post" autocomplete="off" enctype="multipart/form-data">
+
+              <!-- Karena <form> modal 'tambah data hafalan' dan 'edit data hafalan' dijadikan satu, maka terdapat 2 action <form>. Untuk 'tambah data hafalan' action-nya adalah tambah-hafalan.php dan untuk 'edit data hafalan' adalah edit-hafalan.php. Jika ingin dilakukan perubahan maka:-->
+              <!-- 
+                1. Untuk 'Tambah data hafalan':
+                - ubah action yang ada di <form>
+                - dan ubah formHafalan.action di tag script paling bawah (sudah di beri penanda komentar)
+
+                2. Untuk 'Edit data hafalan':
+                - cukup ubah formHafalan.action di tag script bagian 'edit hafalan' di bawah (sudah di beri penanda komentar)
+              -->
+              <form id="form-hafalan" action="tambah-hafalan.php" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="tanggal-hafalan" class="form-label">Tanggal</label>
@@ -820,25 +830,8 @@
                 </div>
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">
-                    <!-- ubah svg -->
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="icon"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
-                    Tambah
+                  <button id="submit-hafalan" class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">
+                    Tambah Hafalan
                   </button>
                 </div>
               </form>
@@ -876,17 +869,17 @@
 
     <script>
       if (!navigator.onLine) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Anda sedang offline',
-        text: 'Koneksi internet terputus. Harap periksa koneksi Anda.',
-        confirmButtonText: 'Refresh',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          location.reload();
-        }
-      });
-    }
+        Swal.fire({
+          icon: 'error',
+          title: 'Anda sedang offline',
+          text: 'Koneksi internet terputus. Harap periksa koneksi Anda.',
+          confirmButtonText: 'Refresh',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload();
+          }
+        });
+      }
     </script>
     <script>
       $(document).ready(function () {
@@ -1005,14 +998,20 @@
       const table = document.getElementById('table-default');
       const modalTitle = document.querySelector('#modal-title-hafalan');
       const formHafalan = document.querySelector('#form-hafalan');
+      const btnSubmitHafalan = document.querySelector('#submit-hafalan');
 
       const handleEditClick = (event) => {
         const target = event.target;
         const isEditButton = target.closest('[data-edit-hafalan="true"]');
         if (isEditButton) {
+          btnSubmitHafalan.innerHTML = 'Ubah Hafalan';
+
+          // action edit data hafalan
+          formHafalan.action = 'edit-hafalan.php';
+
           modalTitle.innerHTML = 'Ubah Data Hafalan';
 
-          // jika 'id' tidak ingin menggunakan 'angka' maka hapus 
+          // jika 'id' tidak ingin menggunakan 'angka' maka hapus 'Number'
           formHafalan.insertAdjacentHTML('afterbegin', `<input type="number" class="form-control" id="id-hafalan" name="id-hafalan" value="${Number(isEditButton.dataset.idHafalan)}" hidden />`);
 
           formHafalan.insertAdjacentHTML('afterbegin', `<input type="text" class="form-control" id="user-id-hafalan" name="user-id-hafalan" value="${isEditButton.dataset.userId}" hidden />`);
@@ -1042,6 +1041,8 @@
           document.querySelector('#ket-s').value = isEditButton.dataset.ketS;
           document.querySelector('#murojaah').value = isEditButton.dataset.murojaah;
           document.querySelector('#ket-m').value = isEditButton.dataset.ketM;
+        } else {
+          console.error('Terjadi bug edit di DOM. Atribut data-edit-hafalan tidak ada atau tidak bernilai true');
         }
       };
 
@@ -1051,11 +1052,17 @@
         modalTitle.innerHTML = 'Tambah Data Hafalan';
         const idHafalan = document.querySelector('#id-hafalan');
         const idUserHafalan = document.querySelector('#user-id-hafalan');
+
         if (idHafalan && idUserHafalan) {
           idHafalan.remove();
           idUserHafalan.remove();
         }
+
+        btnSubmitHafalan.innerHTML = 'Tambah Hafalan';
         formHafalan.reset();
+        // action tambah data hafalan
+        formHafalan.action = 'tambah-hafalan.php';
+
         defaultValueAyat();
       });
     </script>
