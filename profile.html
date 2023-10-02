@@ -439,7 +439,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">4 Surat</h4>
                       <div class="btn-list">
-                        <button class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
+                        <button id="tambah-4surat" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
                           <!-- plus icon -->
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -505,7 +505,7 @@
                     <!-- datatables -->
                     <div class="card">
                       <div class="card-body">
-                        <div id="table-default" class="table-responsive">
+                        <div id="table4Surat" class="table-responsive">
                           <table class="table table-vcenter table-nowrap">
                             <thead>
                               <tr>
@@ -522,7 +522,7 @@
                             <tbody>
                               <tr>
                                 <td>1</td>
-                                <td>2023-08-15</td>
+                                <td class="format-tanggal">2023-08-15</td>
                                 <td>Al-Mulk</td>
                                 <td>2 - 5</td>
                                 <td>Lanjut</td>
@@ -537,15 +537,16 @@
                                       data-bs-toggle="modal"
                                       data-bs-target="#modal-hafalan-santri"
                                       data-edit-hafalan="true"
-                                      data-user-id="XTY21312"
-                                      data-id-hafalan="123"
-                                      data-date="2023-08-15"
-                                      data-surat="Al-Mulk"
-                                      data-ayat-awal="2"
-                                      data-ayat-akhir="5"
-                                      data-ket-s="Lanjut"
-                                      data-murojaah="cek123"
-                                      data-ket-m="Lanjut"
+                                      data-edit-user-id="XTY21312"
+                                      data-edit-id-hafalan="123"
+                                      data-edit-tanggal="2023-08-15"
+                                      data-edit-jenis="4 Surat"
+                                      data-edit-surat="Al-Mulk"
+                                      data-edit-ayat-awal="2"
+                                      data-edit-ayat-akhir="5"
+                                      data-edit-ket-s="Lanjut"
+                                      data-edit-murojaah="cek123"
+                                      data-edit-ket-m="Lanjut"
                                     >
                                       <!-- edit svg -->
                                       <svg
@@ -594,7 +595,7 @@
                               </tr>
                               <tr>
                                 <td>2</td>
-                                <td>2016-10-11</td>
+                                <td class="format-tanggal">2016-10-11</td>
                                 <td>Yaasin</td>
                                 <td>43 - 60</td>
                                 <td>Lanjut</td>
@@ -609,15 +610,16 @@
                                       data-bs-toggle="modal"
                                       data-bs-target="#modal-hafalan-santri"
                                       data-edit-hafalan="true"
-                                      data-user-id="XTY21312"
-                                      data-id-hafalan="456"
-                                      data-date="2016-10-11"
-                                      data-surat="Yaasin"
-                                      data-ayat-awal="43"
-                                      data-ayat-akhir="60"
-                                      data-ket-s="Lanjut"
-                                      data-murojaah="Test123"
-                                      data-ket-m="Lanjut"
+                                      data-edit-user-id="XTY21312"
+                                      data-edit-id-hafalan="456"
+                                      data-edit-tanggal="2016-10-11"
+                                      data-edit-jenis="4 Surat"
+                                      data-edit-surat="Yaasin"
+                                      data-edit-ayat-awal="43"
+                                      data-edit-ayat-akhir="60"
+                                      data-edit-ket-s="Lanjut"
+                                      data-edit-murojaah="Test123"
+                                      data-edit-ket-m="Lanjut"
                                     >
                                       <!-- edit svg -->
                                       <svg
@@ -687,174 +689,414 @@
 
                   <!-- juz 30 -->
                   <div class="tab-pane fade" id="tabs-juz-30">
-                    <h4>Juz 30</h4>
-                    <div>Fringilla egestas nunc quis tellus diam rhoncus ultricies tristique enim at diam, sem nunc amet, pellentesque id egestas velit sed</div>
+                    <div class="tab-pane fade active show" id="tabs-4-surat">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="m-0">30 Juz</h4>
+                        <div class="btn-list">
+                          <button id="tambah-juz30" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
+                            <!-- plus icon -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M12 5l0 14" />
+                              <path d="M5 12l14 0" />
+                            </svg>
+                            Tambah Data Hafalan
+                          </button>
+                          <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M12 5l0 14" />
+                              <path d="M5 12l14 0" />
+                            </svg>
+                          </button>
+                          <button class="btn btn-secondary">
+                            <!-- download icon -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon icon-tabler icon-tabler-download"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                              <path d="M7 11l5 5l5 -5"></path>
+                              <path d="M12 4l0 12"></path>
+                            </svg>
+                            PDF
+                          </button>
+                        </div>
+                      </div>
+
+                      <!-- datatables -->
+                      <div class="card">
+                        <div class="card-body">
+                          <div id="tableJuz30" class="table-responsive">
+                            <table class="table table-vcenter table-nowrap">
+                              <thead>
+                                <tr>
+                                  <th>No</th>
+                                  <th>Tanggal</th>
+                                  <th>Surat</th>
+                                  <th>Ayat</th>
+                                  <th>Ket (S)</th>
+                                  <th>Muroja'ah</th>
+                                  <th>Ket (M)</th>
+                                  <th>Aksi</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td class="format-tanggal">2023-08-15</td>
+                                  <td>Al-Falaq</td>
+                                  <td>1 - 2</td>
+                                  <td>Lanjut</td>
+                                  <td>cek123</td>
+                                  <td>Lanjut</td>
+                                  <td>
+                                    <!-- responsive button -->
+                                    <div class="btn-list">
+                                      <button
+                                        class="btn btn-primary btn-icon"
+                                        aria-label="Ubah Hafalan"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal-hafalan-santri"
+                                        data-edit-hafalan="true"
+                                        data-edit-user-id="XTY21312"
+                                        data-edit-id-hafalan="123"
+                                        data-edit-tanggal="2023-08-15"
+                                        data-edit-jenis="Juz 30"
+                                        data-edit-surat="Al-Falaq"
+                                        data-edit-ayat-awal="1"
+                                        data-edit-ayat-akhir="2"
+                                        data-edit-ket-s="Lanjut"
+                                        data-edit-murojaah="asdasd"
+                                        data-edit-ket-m="Lanjut"
+                                      >
+                                        <!-- edit svg -->
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-edit"
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="2"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        >
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                          <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                          <path d="M16 5l3 3"></path>
+                                        </svg>
+                                      </button>
+                                      <button class="btn btn-danger btn-icon" aria-label="Hapus Profile">
+                                        <!-- trash svg -->
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-trash"
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="2"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        >
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M4 7l16 0"></path>
+                                          <path d="M10 11l0 6"></path>
+                                          <path d="M14 11l0 6"></path>
+                                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                    <!-- end responsive button -->
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td class="format-tanggal">2023-05-10</td>
+                                  <td>Al-Ikhlas</td>
+                                  <td>2 - 3</td>
+                                  <td>Lanjut</td>
+                                  <td>cek123</td>
+                                  <td>Lanjut</td>
+                                  <td>
+                                    <!-- responsive button -->
+                                    <div class="btn-list">
+                                      <button
+                                        class="btn btn-primary btn-icon"
+                                        aria-label="Ubah Hafalan"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal-hafalan-santri"
+                                        data-edit-hafalan="true"
+                                        data-edit-user-id="XTY21312"
+                                        data-edit-id-hafalan="123"
+                                        data-edit-tanggal="2023-05-10"
+                                        data-edit-jenis="Juz 30"
+                                        data-edit-surat="Al-Ikhlas"
+                                        data-edit-ayat-awal="2"
+                                        data-edit-ayat-akhir="3"
+                                        data-edit-ket-s="Lanjut"
+                                        data-edit-murojaah="mantap123"
+                                        data-edit-ket-m="Lanjut"
+                                      >
+                                        <!-- edit svg -->
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-edit"
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="2"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        >
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                          <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                          <path d="M16 5l3 3"></path>
+                                        </svg>
+                                      </button>
+                                      <button class="btn btn-danger btn-icon" aria-label="Hapus Profile">
+                                        <!-- trash svg -->
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          class="icon icon-tabler icon-tabler-trash"
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="2"
+                                          stroke="currentColor"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        >
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M4 7l16 0"></path>
+                                          <path d="M10 11l0 6"></path>
+                                          <path d="M14 11l0 6"></path>
+                                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                    <!-- end responsive button -->
+                                  </td>
+                                </tr>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th>No</th>
+                                  <th>Tanggal</th>
+                                  <th>Surat</th>
+                                  <th>Ayat</th>
+                                  <th>Ket (S)</th>
+                                  <th>Muroja'ah</th>
+                                  <th>Ket (M)</th>
+                                  <th>Aksi</th>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- akhir datatables -->
+                    </div>
+                    <!-- akhir juz 30 -->
                   </div>
-                  <!-- akhir juz 30 -->
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- modal edit profile santri -->
-        <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Ubah Data Santri</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form action="#" method="post" autocomplete="off" enctype="multipart/form-data">
-                <div class="modal-body">
-                  <div class="mb-3">
+          <!-- modal edit profile santri -->
+          <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Ubah Data Santri</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="#" method="post" autocomplete="off" enctype="multipart/form-data">
+                  <div class="modal-body">
                     <div class="mb-3">
-                      <label for="ubah-formFile" class="form-label">Foto Santri</label>
-                      <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" required />
+                      <div class="mb-3">
+                        <label for="ubah-formFile" class="form-label">Foto Santri</label>
+                        <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" required />
+                      </div>
+                      <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
+                      <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap" required />
                     </div>
-                    <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-nama-wali" class="form-label">Nama Wali Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-ttl" class="form-label">Tempat dan Tanggal Lahir</label>
-                    <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-kelas" class="form-label">Kelas</label>
-                    <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas" required />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button class="btn btn-primary ms-auto" type="submit" name="submit-ubah">
-                    <!-- ubah svg -->
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="icon icon-tabler icon-tabler-edit"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                      <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                      <path d="M16 5l3 3"></path>
-                    </svg>
-                    Ubah profile santri
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- akhir modal edit  profile-->
-
-        <!-- modal tambah/edit hafalan santri -->
-        <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 id="modal-title-hafalan" class="modal-title">Tambah Data Hafalan</h5>
-                <small id="sub-modal-title-hafalan">4 Surat</small>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <!-- Karena <form> modal 'tambah data hafalan' dan 'edit data hafalan' dijadikan satu, maka terdapat 2 action <form>. Untuk 'tambah data hafalan' action-nya adalah tambah-hafalan.php dan untuk 'edit data hafalan' adalah edit-hafalan.php. Jika ingin dilakukan perubahan maka:-->
-              <!-- 
-                1. Untuk 'Tambah data hafalan':
-                - ubah action yang ada di <form>
-                - dan ubah formHafalan.action di tag script paling bawah (sudah di beri penanda komentar)
-
-                2. Untuk 'Edit data hafalan':
-                - cukup ubah formHafalan.action di tag script bagian 'edit hafalan' di bawah (sudah di beri penanda komentar)
-              -->
-              <form id="form-hafalan" action="tambah-hafalan.php" method="post" autocomplete="off" enctype="multipart/form-data">
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <label for="tanggal-hafalan" class="form-label">Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal-hafalan" name="tanggal-hafalan" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="surat-hafalan" class="form-label">Surat</label>
-                    <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" required>
-                      <option selected disabled hidden>Pilih Surat</option>
-                      <option value="Ar-Rahman">Ar-Rahman</option>
-                      <option value="Al-Waaqi'ah">Al-Waaqi'ah</option>
-                      <option value="Al-Mulk">Al-Mulk</option>
-                      <option value="Yaasin">Yaasin</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col">
-                        <label for="ayat-start-hafalan" class="form-label">Ayat Awal</label>
-                        <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal" required>
-                          <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
-                        </select>
-                      </div>
-                      <div class="col-1 my-auto pt-4">
-                        <span aria-label="sampai">—</span>
-                      </div>
-                      <div class="col">
-                        <label for="ayat-start-hafalan" class="form-label">Ayat Akhir</label>
-                        <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir" required>
-                          <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
-                        </select>
-                      </div>
+                    <div class="mb-3">
+                      <label for="ubah-alamat" class="form-label">Alamat</label>
+                      <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="ubah-nama-wali" class="form-label">Nama Wali Santri</label>
+                      <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="ubah-ttl" class="form-label">Tempat dan Tanggal Lahir</label>
+                      <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="ubah-kelas" class="form-label">Kelas</label>
+                      <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas" required />
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="ket-s" class="form-label">Keterangan (S)</label>
-                    <input type="text" class="form-control" id="ket-s" name="ket-s" required />
+                  <div class="modal-footer">
+                    <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary ms-auto" type="submit" name="submit-ubah">
+                      <!-- ubah svg -->
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-edit"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                        <path d="M16 5l3 3"></path>
+                      </svg>
+                      Ubah profile santri
+                    </button>
                   </div>
-                  <div class="mb-3">
-                    <label for="murojaah" class="form-label">Muroja'ah</label>
-                    <input type="text" class="form-control" id="murojaah" name="murojaah" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ket-m" class="form-label">Keterangan (M)</label>
-                    <input type="text" class="form-control" id="ket-m" name="ket-m" required />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button id="submit-hafalan" class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">
-                    Tambah Hafalan
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- akhir modal/edit tambah hafalan -->
-
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container-xl">
-            <div class="row text-center align-items-center">
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    Copyright &copy; 2023 - PKM-PM
-                    <a class="text-secondary" href="https://janabadra.ac.id/" target="_blank">Universitas Janabadra</a>
-                  </li>
-                </ul>
+                </form>
               </div>
             </div>
           </div>
-        </footer>
+          <!-- akhir modal edit  profile-->
+
+          <!-- modal tambah/edit hafalan santri -->
+          <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="modal-title-hafalan" class="modal-title">Tambah Data Hafalan</h5>
+                  <small id="sub-modal-title-hafalan">4 Surat</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-hafalan" action="tambah-hafalan.php" method="get" autocomplete="off" enctype="multipart/form-data">
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="tanggal-hafalan" class="form-label">Tanggal</label>
+                      <input type="date" class="form-control" id="tanggal-hafalan" name="tanggal-hafalan" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="jenis-hafalan" class="form-label">Jenis Hafalan</label>
+                      <input type="text" class="form-control" id="jenis-hafalan" name="jenis-hafalan" value="4 Surat" required disabled />
+                    </div>
+                    <div class="mb-3">
+                      <label for="surat-hafalan" class="form-label">Surat</label>
+                      <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" required>
+                        <option selected disabled hidden>Pilih Surat</option>
+                        <option value="Ar-Rahman">Ar-Rahman</option>
+                        <option value="Al-Waaqi'ah">Al-Waaqi'ah</option>
+                        <option value="Al-Mulk">Al-Mulk</option>
+                        <option value="Yaasin">Yaasin</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label for="ayat-start-hafalan" class="form-label">Ayat Awal</label>
+                          <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal" required>
+                            <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
+                          </select>
+                        </div>
+                        <div class="col-1 my-auto pt-4">
+                          <span aria-label="sampai">—</span>
+                        </div>
+                        <div class="col">
+                          <label for="ayat-start-hafalan" class="form-label">Ayat Akhir</label>
+                          <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir" required>
+                            <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="ket-s" class="form-label">Keterangan (S)</label>
+                      <input type="text" class="form-control" id="ket-s" name="ket-s" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="murojaah" class="form-label">Muroja'ah</label>
+                      <input type="text" class="form-control" id="murojaah" name="murojaah" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="ket-m" class="form-label">Keterangan (M)</label>
+                      <input type="text" class="form-control" id="ket-m" name="ket-m" required />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="submit-hafalan" class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">Tambah Hafalan</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- akhir modal/edit tambah hafalan -->
+
+          <footer class="footer footer-transparent d-print-none">
+            <div class="container-xl">
+              <div class="row text-center align-items-center">
+                <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                  <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item">
+                      Copyright &copy; 2023 - PKM-PM
+                      <a class="text-secondary" href="https://janabadra.ac.id/" target="_blank">Universitas Janabadra</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
       </div>
     </div>
 
@@ -884,7 +1126,7 @@
     </script>
     <script>
       $(document).ready(function () {
-        $('#table-default table').DataTable({
+        $('.table-responsive table').DataTable({
           searching: false,
           autoWidth: false,
           responsive: true,
@@ -892,6 +1134,15 @@
           pageLength: 15,
           lengthMenu: [15, 20, 25, 50],
         });
+      });
+    </script>
+    <script>
+      var tanggalElemen = document.querySelectorAll('[class="format-tanggal"]');
+      tanggalElemen.forEach(function (elemen) {
+        var tanggal = elemen.textContent;
+        var tanggalObj = new Date(tanggal);
+        var formatTanggal = tanggalObj.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        elemen.textContent = formatTanggal;
       });
     </script>
 
@@ -904,7 +1155,6 @@
       const nameSurat = document.querySelector('#surat-hafalan');
       const ayatStart = document.querySelector('#ayat-start-hafalan');
       const ayatEnd = document.querySelector('#ayat-end-hafalan');
-
       let totalVerses;
 
       nameSurat.addEventListener('change', () => {
@@ -996,14 +1246,25 @@
 
     <!-- script edit hafalan -->
     <script>
-      const table = document.getElementById('table-default');
+      const table4Surat = document.getElementById('table4Surat');
+      const tableJuz30 = document.getElementById('tableJuz30');
       const modalTitle = document.querySelector('#modal-title-hafalan');
       const formHafalan = document.querySelector('#form-hafalan');
       const btnSubmitHafalan = document.querySelector('#submit-hafalan');
+      const jenisHafalan = document.querySelector('#jenis-hafalan');
+
+      document.querySelector('#tambah-4surat').addEventListener('click', () => {
+        jenisHafalan.value = '4 Surat';
+      });
+
+      document.querySelector('#tambah-juz30').addEventListener('click', () => {
+        jenisHafalan.value = 'Juz 30';
+      });
 
       const handleEditClick = (event) => {
         const target = event.target;
         const isEditButton = target.closest('[data-edit-hafalan="true"]');
+
         if (isEditButton) {
           btnSubmitHafalan.innerHTML = 'Ubah Hafalan';
 
@@ -1013,41 +1274,47 @@
           modalTitle.innerHTML = 'Ubah Data Hafalan';
 
           // jika 'id' tidak ingin menggunakan 'angka' maka hapus 'Number'
-          formHafalan.insertAdjacentHTML('afterbegin', `<input type="number" class="form-control" id="id-hafalan" name="id-hafalan" value="${Number(isEditButton.dataset.idHafalan)}" hidden />`);
+          formHafalan.insertAdjacentHTML('afterbegin', `<input type="number" class="form-control" id="id-hafalan" name="id-hafalan" value="${Number(isEditButton.dataset.editIdHafalan)}" hidden />`);
 
-          formHafalan.insertAdjacentHTML('afterbegin', `<input type="text" class="form-control" id="user-id-hafalan" name="user-id-hafalan" value="${isEditButton.dataset.userId}" hidden />`);
+          formHafalan.insertAdjacentHTML('afterbegin', `<input type="text" class="form-control" id="user-id-hafalan" name="user-id-hafalan" value="${isEditButton.dataset.editUserId}" hidden />`);
 
-          document.querySelector('#tanggal-hafalan').value = isEditButton.dataset.date;
+          document.querySelector('#tanggal-hafalan').value = isEditButton.dataset.editTanggal;
+
+          jenisHafalan.value = isEditButton.dataset.editJenis;
 
           document.querySelectorAll('#surat-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.surat) {
+            if (item.value === isEditButton.dataset.editSurat) {
               item.selected = 'true';
               listJumlahAyatDanAyatAwal();
             }
           });
 
           document.querySelectorAll('#ayat-start-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.ayatAwal) {
+            if (item.value === isEditButton.dataset.editAyatAwal) {
               item.selected = 'true';
               tampilAyatAkhir();
             }
           });
 
           document.querySelectorAll('#ayat-end-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.ayatAkhir) {
+            if (item.value === isEditButton.dataset.editAyatAkhir) {
               item.selected = 'true';
             }
           });
 
-          document.querySelector('#ket-s').value = isEditButton.dataset.ketS;
-          document.querySelector('#murojaah').value = isEditButton.dataset.murojaah;
-          document.querySelector('#ket-m').value = isEditButton.dataset.ketM;
-        } else {
-          console.error('Terjadi bug edit di DOM. Atribut data-edit-hafalan tidak ada atau tidak bernilai true');
+          document.querySelector('#ket-s').value = isEditButton.dataset.editKetS;
+          document.querySelector('#murojaah').value = isEditButton.dataset.editMurojaah;
+          document.querySelector('#ket-m').value = isEditButton.dataset.editKetM;
         }
       };
 
-      table.addEventListener('click', handleEditClick);
+      table4Surat.addEventListener('click', handleEditClick);
+      tableJuz30.addEventListener('click', handleEditClick);
+
+      formHafalan.addEventListener('submit', (event) => {
+        document.querySelector('input[name="jenis-hafalan"]').disabled = false;
+        // event.preventDefault();
+      });
 
       document.querySelector('#modal-hafalan-santri').addEventListener('hidden.bs.modal', () => {
         modalTitle.innerHTML = 'Tambah Data Hafalan';
