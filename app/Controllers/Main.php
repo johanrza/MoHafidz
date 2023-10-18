@@ -49,7 +49,7 @@ class Main extends BaseController
             $username       = $_COOKIE["nb?U5*"];
             $cekUsername    = $this->pengajarModel->where(array('username' => $username))->get()->getRowArray();
             dd($_COOKIE["^Bp/aS"]);
-            if ($cekUsername['password'] === $_COOKIE["^Bp/aS"]) {
+            if (hash('ghost', $cekUsername['password']) === $_COOKIE["^Bp/aS"]) {
                 session()->remove('error');
                 session()->set('id_pengajar', $cekUsername['id_pengajar']);
                 session()->set('nama', $cekUsername['nama']);
@@ -68,25 +68,30 @@ class Main extends BaseController
         $password       = $this->request->getVar('password');
         // Kelemahan jika username sama maka akan terjadi bentrok
         $cekUsername    = $this->pengajarModel->where(array('username' => $username))->get()->getRowArray();
-        // dd($username);
-        $verifikasi     = password_verify($password, $cekUsername['password']);
-        if ($verifikasi) {
-            session()->remove('error');
-            session()->set('id_pengajar', $cekUsername['id_pengajar']);
-            session()->set('nama', $cekUsername['nama']);
-            session()->set('username', $cekUsername['username']);
-            session()->set('gelar', $cekUsername['gelar']);
-            session()->set('foto', $cekUsername['foto']);
-            if (!empty($this->request->getVar('remember'))) {
-                setcookie("nb?U5*", $username, time() + 60);
-                //bingung cara hash
-                setcookie("^Bp/aS", $password, time() + 60);
+        // dd($cekUsername);
+        if ($cekUsername > 0) {
+            $verifikasi     = password_verify($password, $cekUsername['password']);
+            if ($verifikasi) {
+                session()->remove('error');
+                session()->set('id_pengajar', $cekUsername['id_pengajar']);
+                session()->set('nama', $cekUsername['nama']);
+                session()->set('username', $cekUsername['username']);
+                session()->set('gelar', $cekUsername['gelar']);
+                session()->set('foto', $cekUsername['foto']);
+                if (!empty($this->request->getVar('remember'))) {
+                    setcookie("nb?U5*", $username, time() + 60);
+                    //bingung cara hash
+                    setcookie("^Bp/aS", hash('ghost', $cekUsername['password']), time() + 60);
+                }
+                return redirect()->to('/dashboard');
+            } else {
+                session()->set('error', 'Password yang anda masukkan salah');
+                return redirect()->to('/login');
             }
-            return redirect()->to('/dashboard');
         } else {
-            session()->set('error', 'Password/Username yang anda masukkan salah');
+            session()->set('error', 'Username yang anda masukkan salah');
             return redirect()->to('/login');
-        }
+        } 
     }
     public function logout()
     {
