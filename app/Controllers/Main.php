@@ -45,10 +45,11 @@ class Main extends BaseController
     }
     public function login()
     {
-        if (isset($_COOKIE["LOGIN"], $_COOKIE["_YTWD"])) {
-            $username       = $_COOKIE["LOGIN"];
+        if (isset($_COOKIE["nb?U5*"]) && isset($_COOKIE["^Bp/aS"])) {
+            $username       = $_COOKIE["nb?U5*"];
             $cekUsername    = $this->pengajarModel->where(array('username' => $username))->get()->getRowArray();
-            if ($cekUsername['password'] === $_COOKIE["_YTWD"] &&  password_hash($cekUsername['username'], PASSWORD_DEFAULT) === $_COOKIE["LOGIN"] ) {
+            dd($_COOKIE["^Bp/aS"]);
+            if ($cekUsername['password'] === $_COOKIE["^Bp/aS"]) {
                 session()->remove('error');
                 session()->set('id_pengajar', $cekUsername['id_pengajar']);
                 session()->set('nama', $cekUsername['nama']);
@@ -67,6 +68,7 @@ class Main extends BaseController
         $password       = $this->request->getVar('password');
         // Kelemahan jika username sama maka akan terjadi bentrok
         $cekUsername    = $this->pengajarModel->where(array('username' => $username))->get()->getRowArray();
+        // dd($username);
         $verifikasi     = password_verify($password, $cekUsername['password']);
         if ($verifikasi) {
             session()->remove('error');
@@ -76,8 +78,9 @@ class Main extends BaseController
             session()->set('gelar', $cekUsername['gelar']);
             session()->set('foto', $cekUsername['foto']);
             if (!empty($this->request->getVar('remember'))) {
-                setcookie("LOGIN", $username, time() + 5000);
-                setcookie("_YTWD", password_hash($password, PASSWORD_DEFAULT), time() + 5000);
+                setcookie("nb?U5*", $username, time() + 60);
+                //bingung cara hash
+                setcookie("^Bp/aS", $password, time() + 60);
             }
             return redirect()->to('/dashboard');
         } else {
@@ -87,8 +90,8 @@ class Main extends BaseController
     }
     public function logout()
     {
-        setcookie("LOGIN", '', time() - 1);
-        setcookie("_YTWD", '', time() - 1);
+        setcookie("nb?U5*", '', time() - 3600);
+        setcookie("nb?U5*", '', time() - 3600);
         session()->destroy();
         return redirect()->to(base_url('/'));
     }
@@ -97,11 +100,11 @@ class Main extends BaseController
         $santri         = $this->santriModel->find($id_santri);
         $empat_surat    = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => '4 Surat'))->get()->getResultArray();
         $juz_30         = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => 'Juz 30'))->get()->getResultArray();
-         
+
         // Extract the 'date' and 'name' columns into separate arrays
         $dates = array_column($juz_30, 'tanggal');
         $names = array_column($juz_30, 'id_hafalan');
-         
+
         // Sort the multidimensional array based on the 'date' column
         array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
 
@@ -208,9 +211,8 @@ class Main extends BaseController
         endforeach;
         $data = [
             'santri'        => $santri,
-            'validation'    => \Config\Services::validation()
+            // 'validation'    => \Config\Services::validation()
         ];
-        // dd($data);
         return view('data-santri', $data);
     }
     public function addSantri()
@@ -302,7 +304,50 @@ class Main extends BaseController
     }
     public function dataPrestasi(): string
     {
-        return view('data-Prestasi');
+        $santri = $this->santriModel->findAll();
+        $i = 0;
+        foreach ($santri as $s) {
+            $arRahman = $this->hafalanModel
+                ->where(array('id_santri' => $s['id_santri']))
+                ->where(array('jenis' => '4 Surat'))
+                ->where(array('surat' => 'Ar-Rahman'))
+                ->where(array('ayat_akhir' => '78'))
+                ->get()->getResultArray();
+            $alWaaqiah = $this->hafalanModel
+                ->where(array('id_santri' => $s['id_santri']))
+                ->where(array('jenis' => '4 Surat'))
+                ->where(array('surat' => 'Al-Waaqi\'ah'))
+                ->where(array('ayat_akhir' => '96'))
+                ->get()->getResultArray();
+            $alMulk = $this->hafalanModel
+                ->where(array('id_santri' => $s['id_santri']))
+                ->where(array('jenis' => '4 Surat'))
+                ->where(array('surat' => 'Al-Mulk'))
+                ->where(array('ayat_akhir' => '30'))
+                ->get()->getResultArray();
+            $Yaasin = $this->hafalanModel
+                ->where(array('id_santri' => $s['id_santri']))
+                ->where(array('jenis' => '4 Surat'))
+                ->where(array('surat' => 'Yaasin'))
+                ->where(array('ayat_akhir' => '83'))
+                ->get()->getResultArray();
+            $juz_30 = $this->hafalanModel->where(array('id_santri' => $s['id_santri']))->where(array('jenis' => 'Juz 30'))->get()->getResultArray();
+            $dates = array_column($juz_30, 'tanggal');
+            $names = array_column($juz_30, 'id_hafalan');
+            array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+
+            $s['prestasi'] = [
+                'arRahman'  => count($arRahman),
+                'alWaaqiah' => count($alWaaqiah),
+                'alMulk'    => count($alMulk),
+                'Yaasin'    => count($Yaasin),
+                'Juz30'     => $juz_30[0]
+            ];
+            $santri[$i] = $s;
+            $i++;
+        }
+        $data = ['santri' => $santri];
+        return view('data-Prestasi', $data);
     }
     public function masterLogin(): string
     {
@@ -333,7 +378,7 @@ class Main extends BaseController
     }
     public function addPengajar()
     {
-        $password = password_hash($this->request->getVar('password-admin'), PASSWORD_DEFAULT);;
+        $password = password_hash($this->request->getVar('password-admin'), PASSWORD_DEFAULT);
         $this->pengajarModel->save([
             'nama'      => $this->request->getVar('nama-admin'),
             'username'  => $this->request->getVar('username-admin'),

@@ -60,12 +60,12 @@
           <form action="/login/pengajar" method="post" autocomplete="off">
             <div class="mb-3">
               <label class="form-label">Username</label>
-              <input type="text" class="form-control" placeholder="" autocomplete="off" oninvalid="this.setCustomValidity('Masukan Username Anda')" oninput="this.setCustomValidity('')" name="username" value="" required />
+              <input type="text" class="form-control" name="username" placeholder="" autocomplete="off" oninvalid="this.setCustomValidity('Masukan Username Anda')" oninput="this.setCustomValidity('')" value="" required />
             </div>
             <div class=" mb-2">
               <label class="form-label"> Password </label>
               <div class="input-group input-group-flat">
-                <input type="password" class="form-control" placeholder="" autocomplete="off" oninvalid="this.setCustomValidity('Masukan Password Anda')" oninput="this.setCustomValidity('')" name="password" value="" required />
+                <input type="password" class="form-control" name="password" placeholder="" autocomplete="off" oninvalid="this.setCustomValidity('Masukan Password Anda')" oninput="this.setCustomValidity('')" value="" required />
               </div>
             </div>
             <div class=" mt-4">

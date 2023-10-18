@@ -255,28 +255,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Budi Satria</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>Al-Fajr:12</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Bekka Hani</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>Al-Qori'ah:11</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  <?php $i = 1;
+                  foreach ($santri as $s) {
+                    $p = $s['prestasi'];
+                    $j = $p['Juz30']; ?>
+                    <tr>
+                      <td><?= $i++; ?></td>
+                      <td><?= $s['nama']; ?></td>
+                      <td><?= ($p['arRahman'] === 1)  ? "✓" : " "; ?></td>
+                      <td><?= ($p['alWaaqiah'] === 1) ? "✓" : " "; ?></td>
+                      <td><?= ($p['alMulk'] === 1)    ? "✓" : " "; ?></td>
+                      <td><?= ($p['Yaasin'] === 1)    ? "✓" : " "; ?></td>
+                      <td><?= $j['surat']; ?>:<?= $j['ayat_akhir']; ?></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  <?php } ?>
                 </tbody>
                 <tfoot>
                   <tr>
@@ -296,7 +290,6 @@
         </div>
       </div>
       <!-- akhir data santri -->
-
       <footer class="footer footer-transparent d-print-none">
         <div class="container-xl">
           <div class="row text-center align-items-center">
