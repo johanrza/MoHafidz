@@ -353,7 +353,10 @@
                           <path d="M5 12l14 0" />
                         </svg>
                       </button>
-                      <button class="btn btn-secondary">
+
+                      <!-- button PDF 4 Surat -->
+                      <!-- kirim id: pdf/4surat/(:id-nya) -->
+                      <a class="btn btn-secondary" href="pdf/4surat/" target="_blank">
                         <!-- download icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -362,7 +365,7 @@
                           <path d="M12 4l0 12"></path>
                         </svg>
                         PDF
-                      </button>
+                      </a>
                     </div>
                   </div>
 
@@ -472,7 +475,10 @@
                             <path d="M5 12l14 0" />
                           </svg>
                         </button>
-                        <button class="btn btn-secondary">
+
+                        <!-- button PDF Juz 30 -->
+                        <!-- kirim id: pdf/juz30/(:id-nya) -->
+                        <a class="btn btn-secondary" target="_blank">
                           <!-- download icon -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -481,7 +487,7 @@
                             <path d="M12 4l0 12"></path>
                           </svg>
                           PDF
-                        </button>
+                        </a>
                       </div>
                     </div>
 
