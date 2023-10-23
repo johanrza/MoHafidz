@@ -66,6 +66,7 @@ $routes->post('/settings/updatePengajar/(:num)', 'Main::settingsUpdatePengajar/$
 
 // PDF
 $routes->get('profile/(:num)/pdf/(:any)', 'Main::generatepdf/$1/(:any)');
+$routes->get('data-prestasi/pdf/', 'Main::generatepdfPrestasi/');
 
 
 
