@@ -355,8 +355,7 @@
                       </button>
 
                       <!-- button PDF 4 Surat -->
-                      <!-- kirim id: pdf/4surat/(:id-nya) -->
-                      <a class="btn btn-secondary" href="pdf/4surat/" target="_blank">
+                      <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat" target="_blank">
                         <!-- download icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -477,8 +476,7 @@
                         </button>
 
                         <!-- button PDF Juz 30 -->
-                        <!-- kirim id: pdf/juz30/(:id-nya) -->
-                        <a class="btn btn-secondary" target="_blank">
+                        <a class="btn btn-secondary" href="pdf/4surat/<?= $santri['id_santri'] ?>/juz-30" target="_blank">
                           <!-- download icon -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -537,7 +535,7 @@
                                           <path d="M16 5l3 3"></path>
                                         </svg>
                                       </button>
-                                      <button class="btn btn-danger btn-icon" onclick="location.href='/profile/deleteHafalan/<?= $juz['id_hafalan']; ?>'" aria-label="Hapus Profile">
+                                      <button class="btn btn-danger btn-icon" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')" aria-label="Hapus Profile">
                                         <!-- trash svg -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -592,7 +590,7 @@
                   <div class="mb-3">
                     <div class="mb-3">
                       <label for="ubah-formFile" class="form-label">Foto Santri</label>
-                      <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" />
+                      <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" value="<?= $santri['foto']; ?>" />
                       <input type="hidden" name="ubah-formFoto" value="<?= $santri['foto']; ?>" />
                     </div>
                     <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>

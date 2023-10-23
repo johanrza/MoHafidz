@@ -8,7 +8,6 @@ use \App\Models\hafalanModel;
 use App\Models\masterModel;
 
 helper('url');
-
 // helper('filesystem');
 
 class Main extends BaseController
@@ -188,6 +187,7 @@ class Main extends BaseController
 	public function deleteHafalan($id_hafalan)
 	{
 		$this->hafalanModel->delete($id_hafalan);
+		
 		return redirect()->back();
 	}
 	public function settings(): string
@@ -458,15 +458,23 @@ class Main extends BaseController
 		session()->set('foto', '');
 		return redirect()->to('/settings');
 	}
-
-	public function generatepdf()
+	public function generatepdf($id_santri, $jenis)
 	{
 		$mpdf = new \Mpdf\Mpdf([
 			'mode' => 'c',
 			'format' => [165, 210],
 			'margin_top' => 48,
 		]);
-		$data = view('cetak-4surat', []);
+		if ($jenis = '4-surat') {$jenis_hafalan = "4 Surat";}
+		if ($jenis = 'juz-30') {$jenis_hafalan = "Juz 30";}
+		$data_hafalan = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => $jenis_hafalan))->get()->getResultArray();
+		$data_santri = $this->santriModel->where(array('id_santri' => $id_santri))->get()->getRowArray();
+		//sorting data hafalan
+		$dates = array_column($data_hafalan, 'tanggal');
+		$names = array_column($data_hafalan, 'id_hafalan');
+		array_multisort($dates, SORT_DESC, $names, SORT_DESC, $data_hafalan);
+
+		$data = view('cetak-hafalan',['data_hafalan' => $data_hafalan, 'data_santri' => $data_santri]);
 		$mpdf->WriteHTML($data);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
