@@ -67,6 +67,7 @@ $routes->post('/settings/updatePengajar/(:num)', 'Main::settingsUpdatePengajar/$
 // PDF
 $routes->get('/pdf/4surat/', 'Main::generatepdf/'); // (:num)
 // $routes->get('/pdf/juz30/', 'Main::generatepdf/');
+$routes->get('data-prestasi/pdf/', 'Main::generatepdfPrestasi/');
 
 
 

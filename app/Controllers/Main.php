@@ -470,7 +470,22 @@ class Main extends BaseController
 		$mpdf->WriteHTML($data);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
-		// nama file ketika di save
-		$mpdf->Output('sample.pdf', 'I');
+		// nama file ketika di save: [namaSantri].pdf
+		$mpdf->Output('Beka Hani Suseno.pdf', 'I');
+	}
+
+	public function generatepdfPrestasi()
+	{
+		$mpdf = new \Mpdf\Mpdf([
+			'mode' => 'c',
+			'orientation' => 'L',
+		]);
+
+		$data = view('pdf-data-prestasi', []);
+		$mpdf->WriteHTML($data);
+		$this->response->setHeader('Content-Type', 'application/pdf');
+
+		// nama file ketika di save: format penamaan data-prestasi_[tanggalAwal]_[tanggalAkhir].pdf
+		$mpdf->Output('data-prestasi.pdf', 'I');
 	}
 }
