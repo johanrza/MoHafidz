@@ -256,17 +256,17 @@
                     </svg>
                   </button>
                   <button class="btn btn-danger" aria-label="Hapus Profile">
-                  <a style="text-decoration: none; color: white;" href="/profile/deleteSantri/<?= $santri['id_santri']; ?>" style="all : unset;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')">
-                    <!-- trash svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M4 7l16 0"></path>
-                      <path d="M10 11l0 6"></path>
-                      <path d="M14 11l0 6"></path>
-                      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                    </svg>
-                  </a>
+                    <a style="text-decoration: none; color: white;" href="/profile/deleteSantri/<?= $santri['id_santri']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>' )" style="all : unset;">
+                      <!-- trash svg -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M4 7l16 0"></path>
+                        <path d="M10 11l0 6"></path>
+                        <path d="M14 11l0 6"></path>
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                      </svg>
+                    </a>
                   </button>
                 </div>
                 <!-- end responsive button -->
@@ -414,7 +414,7 @@
                                         <path d="M16 5l3 3"></path>
                                       </svg>
                                     </button>
-                                    <button class="btn btn-danger btn-icon" onclick="location.href='/profile/deleteHafalan/<?= $surat['id_hafalan']; ?>'" aria-label="Hapus Hafalan">
+                                    <a class="btn btn-danger btn-icon" aria-label=" Hapus Hafalan" style="text-decoration: none; color: white;" href="/profile/deleteHafalan/<?= $surat['id_hafalan']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data hafalan ini ?')">
                                       <!-- trash svg -->
                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -424,7 +424,7 @@
                                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                         <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                       </svg>
-                                    </button>
+                                    </a>
                                   </div>
                                   <!-- end responsive button -->
                                 </td>
@@ -476,7 +476,7 @@
                         </button>
 
                         <!-- button PDF Juz 30 -->
-                        <a class="btn btn-secondary" href="pdf/4surat/<?= $santri['id_santri'] ?>/juz-30" target="_blank">
+                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30" target="_blank">
                           <!-- download icon -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -535,7 +535,7 @@
                                           <path d="M16 5l3 3"></path>
                                         </svg>
                                       </button>
-                                      <button class="btn btn-danger btn-icon" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')" aria-label="Hapus Profile">
+                                      <a class="btn btn-danger btn-icon" aria-label="Hapus Hafalan" style="text-decoration: none; color: white;" href="/profile/deleteHafalan/<?= $juz['id_hafalan']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data hafalan ini ?')">
                                         <!-- trash svg -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -545,7 +545,7 @@
                                           <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                           <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                         </svg>
-                                      </button>
+                                      </a>
                                     </div>
                                     <!-- end responsive button -->
                                   </td>

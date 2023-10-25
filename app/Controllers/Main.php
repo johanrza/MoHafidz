@@ -187,7 +187,7 @@ class Main extends BaseController
 	public function deleteHafalan($id_hafalan)
 	{
 		$this->hafalanModel->delete($id_hafalan);
-		
+
 		return redirect()->back();
 	}
 	public function settings(): string
@@ -208,7 +208,7 @@ class Main extends BaseController
 	{
 		$santri = $this->santriModel->findAll();
 		$i = 0;
-		foreach ($santri as $s):
+		foreach ($santri as $s) :
 			$pengajar = $this->pengajarModel->where(array('id_pengajar' => $s['input_oleh']))->get()->getRowArray();
 			$s['input_oleh'] = $pengajar['nama'];
 			$santri[$i] = $s;
@@ -297,7 +297,7 @@ class Main extends BaseController
 		$dataHafalan = $this->hafalanModel->where(array('id_santri' => $id_santri))->get()->getResultArray();
 		// dd($dataHafalan);
 		if ($dataHafalan !== 0) {
-			foreach ($dataHafalan as $h):
+			foreach ($dataHafalan as $h) :
 				$this->hafalanModel->delete($h);
 			endforeach;
 		}
@@ -337,10 +337,17 @@ class Main extends BaseController
 				->where(array('ayat_akhir' => '83'))
 				->get()->getResultArray();
 			$juz_30 = $this->hafalanModel->where(array('id_santri' => $s['id_santri']))->where(array('jenis' => 'Juz 30'))->get()->getResultArray();
-			$dates = array_column($juz_30, 'tanggal');
-			$names = array_column($juz_30, 'id_hafalan');
-			array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
-
+			if (count($juz_30) < 1) {
+				$juz_30[0] = [
+					'surat' 	 => " ",
+					'ayat_akhir' => " "
+				];
+			} else {
+				$dates = array_column($juz_30, 'tanggal');
+				$names = array_column($juz_30, 'id_hafalan');
+				array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+			}
+			// dd($juz_30);
 			$s['prestasi'] = [
 				'arRahman' => count($arRahman),
 				'alWaaqiah' => count($alWaaqiah),
@@ -465,8 +472,12 @@ class Main extends BaseController
 			'format' => [165, 210],
 			'margin_top' => 48,
 		]);
-		if ($jenis = '4-surat') {$jenis_hafalan = "4 Surat";}
-		if ($jenis = 'juz-30') {$jenis_hafalan = "Juz 30";}
+		if ($jenis === '4-surat') {
+			$jenis_hafalan = "4 Surat";
+		}
+		if ($jenis === 'juz-30') {
+			$jenis_hafalan = "Juz 30";
+		}
 		$data_hafalan = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => $jenis_hafalan))->get()->getResultArray();
 		$data_santri = $this->santriModel->where(array('id_santri' => $id_santri))->get()->getRowArray();
 		//sorting data hafalan
@@ -474,14 +485,13 @@ class Main extends BaseController
 		$names = array_column($data_hafalan, 'id_hafalan');
 		array_multisort($dates, SORT_DESC, $names, SORT_DESC, $data_hafalan);
 
-		$data = view('cetak-hafalan',['data_hafalan' => $data_hafalan, 'data_santri' => $data_santri]);
+		$data = view('cetak-hafalan', ['data_hafalan' => $data_hafalan, 'data_santri' => $data_santri]);
 		$mpdf->WriteHTML($data);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
 		// nama file ketika di save: [namaSantri].pdf
 		$mpdf->Output('Beka Hani Suseno.pdf', 'I');
 	}
-
 	public function generatepdfPrestasi()
 	{
 		$mpdf = new \Mpdf\Mpdf([

@@ -65,7 +65,7 @@ $routes->post('/profile/updateHafalan/(:num)', 'Main::updateHafalan/$1');
 $routes->post('/settings/updatePengajar/(:num)', 'Main::settingsUpdatePengajar/$1');
 
 // PDF
-$routes->get('profile/(:num)/pdf/(:any)', 'Main::generatepdf/$1/(:any)');
+$routes->get('profile/(:num)/pdf/(:any)', 'Main::generatepdf/$1/$2');
 $routes->get('data-prestasi/pdf/', 'Main::generatepdfPrestasi/');
 
 
