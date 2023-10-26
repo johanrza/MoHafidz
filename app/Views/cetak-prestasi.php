@@ -18,7 +18,11 @@
 <br>
 <table width="100%">
   <tr>
-    <td width="33%">Bulan : Mei 2023</td>
+    <?php if (!is_array($waktu)) { ?>
+      <td width="33%">Bulan : <?= $waktu . ' ' . $tahun ?></td>
+    <?php } else { ?>
+      <td width="33%">Bulan : <?= $waktu[0] . ' - ' . $waktu[1] . ' ' . $tahun ?></td>
+    <?php } ?>
     <td width="33%" style="text-align: center;">Rumah Tahfidz : Al - Khusna</td>
     <td width="33%" style="text-align: right;">NO : 27</td>
   </tr>
@@ -42,8 +46,8 @@
     </tr>
   </thead>
   <tbody>
-      <?php $i = 1;
-      foreach ($santri as $s) {
+    <?php $i = 1;
+    foreach ($santri as $s) {
       $p = $s['prestasi'];
       $arRahman  = $p['arRahman'];
       $alWaaqiah = $p['alWaaqiah'];
@@ -52,32 +56,33 @@
       $j = $p['Juz30']; ?>
       <tr>
         <td>
-        <?= $i++; ?>
+          <?= $i++; ?>
         </td>
         <td class="nama">
-        <?= $s['nama']; ?>
+          <?= $s['nama']; ?>
         </td>
         <td>
-        <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir']." Ayat" : ''); ?>
+          <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-        <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir']." Ayat" : ''); ?>
+          <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-        <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir']." Ayat" : ''); ?>
+          <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-        <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir']." Ayat" : ''); ?>
+          <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-        <?= $j['surat']; ?>
-        <?= ($j['surat'] !== " ") ? ":" : " "; ?>
-        <?= $j['ayat_akhir']; ?>
+          <?= $j['surat']; ?>
+          <?= ($j['surat'] !== " ") ? ":" : " "; ?>
+          <?= $j['ayat_akhir']; ?>
         </td>
         <td></td>
         <td></td>
       </tr>
-      <?php } ?>
+    <?php } ?>
   </tbody>
+  <!-- kurang hitungan centang -->
 
 </table>

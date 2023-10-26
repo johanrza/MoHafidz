@@ -232,7 +232,7 @@
           <div class="d-flex">
 
             <form class="row" action="/data-prestasi/short-by-date" method="post">
-            <!-- <form class="row" action="#" method="get"> -->
+              <!-- <form class="row" action="#" method="get"> -->
               <div class="col-auto">
                 <input type="date" class="form-control" id="tanggalAwal" name="tgl-awal" />
               </div>
@@ -277,6 +277,10 @@
                 </thead>
                 <tbody>
                   <?php $i = 1;
+                  $R = 0;
+                  $W = 0;
+                  $M = 0;
+                  $Y = 0;
                   foreach ($santri as $s) {
                     $p = $s['prestasi'];
                     $arRahman  = $p['arRahman'];
@@ -292,16 +296,48 @@
                         <?= $s['nama']; ?>
                       </td>
                       <td>
-                        <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir']." Ayat" : ''); ?>
+                        <?php $ayat_akhir_arRahman = $arRahman['ayat_akhir'];
+                        if ($ayat_akhir_arRahman === '78') {
+                          $R++; // Increment the counter
+                          echo "✓";
+                        } elseif ($ayat_akhir_arRahman !== " ") {
+                          echo $ayat_akhir_arRahman . " Ayat";
+                        } else {
+                          echo ''; // You can replace this with any desired output for no checkmark
+                        } ?>
                       </td>
                       <td>
-                        <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir']." Ayat" : ''); ?>
+                        <?php $ayat_akhir_alWaaqiah = $alWaaqiah['ayat_akhir'];
+                        if ($ayat_akhir_alWaaqiah === '96') {
+                          $W++; // Increment the counter
+                          echo "✓";
+                        } elseif ($ayat_akhir_alWaaqiah !== " ") {
+                          echo $ayat_akhir_alWaaqiah . " Ayat";
+                        } else {
+                          echo ''; // You can replace this with any desired output for no checkmark
+                        } ?>
                       </td>
                       <td>
-                        <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir']." Ayat" : ''); ?>
+                        <?php $ayat_akhir_alMulk = $alMulk['ayat_akhir'];
+                        if ($ayat_akhir_alMulk === '30') {
+                          $M++; // Increment the counter
+                          echo "✓";
+                        } elseif ($ayat_akhir_alMulk !== " ") {
+                          echo $ayat_akhir_alMulk . " Ayat";
+                        } else {
+                          echo ''; // You can replace this with any desired output for no checkmark
+                        } ?>
                       </td>
                       <td>
-                        <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir']." Ayat" : ''); ?>
+                        <?php $ayat_akhir_Yaasin = $Yaasin['ayat_akhir'];
+                        if ($ayat_akhir_Yaasin === '83') {
+                          $Y++; // Increment the counter
+                          echo "✓";
+                        } elseif ($ayat_akhir_Yaasin !== " ") {
+                          echo $ayat_akhir_Yaasin . " Ayat";
+                        } else {
+                          echo ''; // You can replace this with any desired output for no checkmark
+                        } ?>
                       </td>
                       <td>
                         <?= $j['surat']; ?>
@@ -316,10 +352,10 @@
                 <tfoot>
                   <tr>
                     <th class="text-center" colspan="2">Jumlah</th>
-                    <th>2</th>
-                    <th>2</th>
-                    <th>2</th>
-                    <th>2</th>
+                    <th><?= $R ?></th>
+                    <th><?= $W ?></th>
+                    <th><?= $M ?></th>
+                    <th><?= $Y ?></th>
                     <th></th>
                     <th></th>
                     <th></th>
