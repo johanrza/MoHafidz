@@ -127,3 +127,6 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 /.php-cs-fixer.php
+
+#gambar user pada database
+public/img/*

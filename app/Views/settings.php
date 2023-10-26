@@ -243,7 +243,7 @@
                     <label for="username-admin" class="form-label">Username</label>
                     <input type="text" id="username-admin" class="form-control" name="username-admin" value="<?php echo session('username') ?>" />
                   </div>
-                  <div class="col-md">
+                  <div class="col-md mt-3 mt-md-0">
                     <label for="gelar-admin" class="form-label">Gelar</label>
                     <select name="gelar-admin" id="gelar-admin" class="form-control">
                       <?php if (session('gelar') === 'Ustadz') { ?>
@@ -266,11 +266,11 @@
                 <?php };
                 session()->remove('error'); ?>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-md-6">
                     <label for="inputPasswordLama" class="visually-hidden">Password Lama</label>
                     <input type="password" class="form-control" id="inputPasswordLama" name="password-admin" placeholder="Masukan Password Lama">
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 mt-2 mt-md-0">
                     <label for="inputPasswordBaru" class="visually-hidden">Password Baru</label>
                     <input type="password" class="form-control" id="inputPasswordBaru" name="new-password-admin" placeholder="Masukan Password Baru">
                   </div>
