@@ -42,35 +42,42 @@
     </tr>
   </thead>
   <tbody>
-    <?php for ($i = 1; $i <= 100; $i++): ?>
+      <?php $i = 1;
+      foreach ($santri as $s) {
+      $p = $s['prestasi'];
+      $arRahman  = $p['arRahman'];
+      $alWaaqiah = $p['alWaaqiah'];
+      $alMulk    = $p['alMulk'];
+      $Yaasin    = $p['Yaasin'];
+      $j = $p['Juz30']; ?>
       <tr>
         <td>
-          <?= $i ?>
+        <?= $i++; ?>
         </td>
-        <td class="nama">Beka Hani Suseno</td>
-        <td>✓</td>
-        <td>83 Ayat</td>
-        <td></td>
-        <td></td>
-        <td>Al-Balad: 6</td>
+        <td class="nama">
+        <?= $s['nama']; ?>
+        </td>
+        <td>
+        <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir']." Ayat" : ''); ?>
+        </td>
+        <td>
+        <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir']." Ayat" : ''); ?>
+        </td>
+        <td>
+        <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir']." Ayat" : ''); ?>
+        </td>
+        <td>
+        <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir']." Ayat" : ''); ?>
+        </td>
+        <td>
+        <?= $j['surat']; ?>
+        <?= ($j['surat'] !== " ") ? ":" : " "; ?>
+        <?= $j['ayat_akhir']; ?>
+        </td>
         <td></td>
         <td></td>
       </tr>
-      <?php $i++ ?>
-      <tr>
-        <td>
-          <?= $i ?>
-        </td>
-        <td class="nama">Dwi Aditya</td>
-        <td>✓</td>
-        <td>40 Ayat</td>
-        <td>✓</td>
-        <td>58 Ayat</td>
-        <td>Al-Fajr: 26</td>
-        <td></td>
-        <td></td>
-      </tr>
-    <?php endfor; ?>
+      <?php } ?>
   </tbody>
 
 </table>
