@@ -466,8 +466,7 @@
                       <div class="row align-items-center">
                         <label for="ubah-formFile" class="form-label">Foto Santri</label>
                         <div class="col-auto">
-                          <span class="avatar avatar-xl"
-                            style="background-image: url(<?php echo base_url('/img/' . $s['foto']) ?>)">
+                          <span>
                             <img class="avatar avatar-xl" id="updateFoto"
                               src="<?php echo base_url('/img/' . $s['foto']) ?>" style="object-fit:cover">
                           </span>
@@ -485,7 +484,7 @@
                           <label for="fileInput" class="btn"> Ganti Foto
                             <input type="file" id="fileInput" class="d-none" name="tambah-formFile" accept="image/*"
                               onchange="document.getElementById('updateFoto').src = window.URL.createObjectURL(this.files[0])" />
-                            <input type="hidden" name="ubah-formFoto" value="<?= session('foto') ?>" />
+                            <input type="hidden" name="ubah-formFoto" value="" />
                           </label>
                         </div>
                         <div class="col-auto mt-2">
