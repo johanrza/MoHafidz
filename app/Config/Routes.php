@@ -59,6 +59,9 @@ $routes->post('/masterDashboard/addPengajar', 'Main::addPengajar');
 $routes->post('/masterDashboard/updatePengajar/(:num)', 'Main::updatePengajar/$1');
 $routes->post('/data-santri/addSantri', 'Main::addSantri');
 $routes->post('/data-santri/updateSantri/(:num)', 'Main::updateSantri/$1');
+//
+$routes->post('/data-prestasi/short-by-date', 'Main::dataPrestasiSort');
+//
 $routes->post('/profile/updateProfile/(:num)', 'Main::updateProfile/$1');
 $routes->post('/profile/addHafalan/(:num)', 'Main::addHafalan/$1');
 $routes->post('/profile/updateHafalan/(:num)', 'Main::updateHafalan/$1');

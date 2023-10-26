@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Prestasi - Mohafidz - Monitoring Hafidz</title>
+  <base href="<?= base_url() ?>" target="_self">
 
   <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png">
@@ -230,7 +231,8 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex">
 
-            <form class="row" action="#" method="get">
+            <form class="row" action="/data-prestasi/short-by-date" method="post">
+            <!-- <form class="row" action="#" method="get"> -->
               <div class="col-auto">
                 <input type="date" class="form-control" id="tanggalAwal" name="tgl-awal" />
               </div>
@@ -245,7 +247,7 @@
               </div>
             </form>
           </div>
-          <a class="btn btn-secondary" href="data-prestasi/pdf" target="_blank">
+          <a class="btn btn-secondary" href="data-prestasi/pdf/" target="_blank">
             <!-- download icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -277,6 +279,10 @@
                   <?php $i = 1;
                   foreach ($santri as $s) {
                     $p = $s['prestasi'];
+                    $arRahman  = $p['arRahman'];
+                    $alWaaqiah = $p['alWaaqiah'];
+                    $alMulk    = $p['alMulk'];
+                    $Yaasin    = $p['Yaasin'];
                     $j = $p['Juz30']; ?>
                     <tr>
                       <td>
@@ -286,16 +292,16 @@
                         <?= $s['nama']; ?>
                       </td>
                       <td>
-                        <?= ($p['arRahman'] === 1) ? "✓" : " "; ?>
+                        <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir']." Ayat" : ''); ?>
                       </td>
                       <td>
-                        <?= ($p['alWaaqiah'] === 1) ? "✓" : " "; ?>
+                        <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir']." Ayat" : ''); ?>
                       </td>
                       <td>
-                        <?= ($p['alMulk'] === 1) ? "✓" : " "; ?>
+                        <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir']." Ayat" : ''); ?>
                       </td>
                       <td>
-                        <?= ($p['Yaasin'] === 1) ? "✓" : " "; ?>
+                        <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir']." Ayat" : ''); ?>
                       </td>
                       <td>
                         <?= $j['surat']; ?>

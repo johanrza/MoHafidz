@@ -466,16 +466,14 @@
                       <div class="row align-items-center">
                         <label for="ubah-formFile" class="form-label">Foto Santri</label>
                         <div class="col-auto">
-                          <span class="avatar avatar-xl"
-                            style="background-image: url(<?php echo base_url('/img/' . $s['foto']) ?>)">
-                            <img class="avatar avatar-xl" id="updateFoto"
-                              src="<?php echo base_url('/img/' . $s['foto']) ?>" style="object-fit:cover">
+                          <span>
+                            <img class="avatar avatar-xl" id="gantiFoto" src="<?php echo base_url('/img/' . $s['foto']) ?>" style="object-fit: contain;">
                           </span>
 
                           <!-- kalo ga ada fotonya pakai blank picture -->
                           <!-- <span class="avatar avatar-xl"
                               style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)">
-                              <img class="avatar avatar-xl" id="updateFoto"
+                              <img class="avatar avatar-xl" id="gantiFoto"
                                 src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
                                 style="object-fit:cover">
                             </span> -->
@@ -483,23 +481,21 @@
 
                         <div class="col-auto">
                           <label for="fileInput" class="btn"> Ganti Foto
-                            <input type="file" id="fileInput" class="d-none" name="tambah-formFile" accept="image/*"
-                              onchange="document.getElementById('updateFoto').src = window.URL.createObjectURL(this.files[0])" />
-                            <input type="hidden" name="ubah-formFoto" value="<?= session('foto') ?>" />
+                            <input type="file" id="fileInput" class="d-none" name="ubah-formFile" accept="image/*"
+                            onchange="document.getElementById('gantiFoto').src = window.URL.createObjectURL(this.files[0])" />
+                            <input type="hidden" name="ubah-formFoto" value="<?= $s['foto']; ?>" />
                           </label>
                         </div>
                         <div class="col-auto mt-2">
-                          <a href="/settings/deleteFoto"
-                            onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');"
-                            class="btn btn-outline-danger">
+                          <a href="/settings/deleteFoto" onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');" class="btn btn-outline-danger">
                             Hapus Foto
                           </a>
                         </div>
                       </div>
 
                       <!-- yang lama -->
-                      <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" />
-                      <input type="hidden" name="ubah-formFoto" value="<?= $s['foto']; ?>" />
+                      <!-- <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" />
+                      <input type="hidden" name="ubah-formFoto" value="<?php // echo $s['foto']; ?>" /> -->
                     </div>
                     <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
                     <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap"

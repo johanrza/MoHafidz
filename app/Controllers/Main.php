@@ -270,6 +270,7 @@ class Main extends BaseController
 			$namaFoto = $this->request->getVar('ubah-formFoto');
 		} else {
 			$replace = $this->request->getVar('ubah-formFoto');
+			// dd($replace);
 			if ($replace !== '') {
 				unlink('./img/' . $replace);
 			}
@@ -309,34 +310,49 @@ class Main extends BaseController
 	}
 	public function dataPrestasi(): string
 	{
+		session()->set('tglAwalPDF','kosong');
+		session()->set('tglAkhirPDF','kosong');
 		$santri = $this->santriModel->findAll();
 		$i = 0;
 		foreach ($santri as $s) {
+			// 4 Surat
 			$arRahman = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
 				->where(array('surat' => 'Ar-Rahman'))
-				->where(array('ayat_akhir' => '78'))
-				->get()->getResultArray();
+				->orderBy('tanggal', 'DESC')
+				->limit(1)
+				->get()->getRowArray();
+			if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
 			$alWaaqiah = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
 				->where(array('surat' => 'Al-Waaqi\'ah'))
-				->where(array('ayat_akhir' => '96'))
-				->get()->getResultArray();
+				->orderBy('tanggal', 'DESC')
+				->limit(1)
+				->get()->getRowArray();
+			if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
 			$alMulk = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
 				->where(array('surat' => 'Al-Mulk'))
-				->where(array('ayat_akhir' => '30'))
-				->get()->getResultArray();
+				->orderBy('tanggal', 'DESC')
+				->limit(1)
+				->get()->getRowArray();
+			if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
 			$Yaasin = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
 				->where(array('surat' => 'Yaasin'))
-				->where(array('ayat_akhir' => '83'))
-				->get()->getResultArray();
-			$juz_30 = $this->hafalanModel->where(array('id_santri' => $s['id_santri']))->where(array('jenis' => 'Juz 30'))->get()->getResultArray();
+				->orderBy('tanggal', 'DESC')
+				->limit(1)
+				->get()->getRowArray();
+			if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+			//Juz 30
+			$juz_30 = $this->hafalanModel
+			->where(array('id_santri' => $s['id_santri']))
+			->where(array('jenis' => 'Juz 30'))
+			->get()->getResultArray();
 			if (count($juz_30) < 1) {
 				$juz_30[0] = [
 					'surat' 	 => " ",
@@ -347,12 +363,87 @@ class Main extends BaseController
 				$names = array_column($juz_30, 'id_hafalan');
 				array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
 			}
-			// dd($juz_30);
+			// Memasukkan data
 			$s['prestasi'] = [
-				'arRahman' => count($arRahman),
-				'alWaaqiah' => count($alWaaqiah),
-				'alMulk' => count($alMulk),
-				'Yaasin' => count($Yaasin),
+				'arRahman' => $arRahman,
+				'alWaaqiah' => $alWaaqiah,
+				'alMulk' => $alMulk,
+				'Yaasin' => $Yaasin,
+				'Juz30' => $juz_30[0]
+			];
+			$santri[$i] = $s;
+			$i++;
+		}
+		$data = ['santri' => $santri];
+		return view('data-Prestasi', $data);
+	}
+	public function dataPrestasiSort()
+	{
+		$tglAwal  = $this->request->getVar('tgl-awal');
+		$tglAkhir = $this->request->getVar('tgl-akhir');
+		session()->set('tglAwalPDF',$tglAwal);
+		session()->set('tglAkhirPDF',$tglAkhir);
+		$santri = $this->santriModel->findAll();
+		$i = 0;
+		foreach ($santri as $s) {
+			// 4 Surat
+			$arRahman = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => '4 Surat'))
+				->where(array('surat' => 'Ar-Rahman'))
+				->where('tanggal >=', $tglAwal)
+				->where('tanggal <=', $tglAkhir)
+				->limit(1)
+				->get()->getRowArray();
+			if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+			$alWaaqiah = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => '4 Surat'))
+				->where(array('surat' => 'Al-Waaqi\'ah'))				
+				->where('tanggal >=', $tglAwal)
+				->where('tanggal <=', $tglAkhir)
+				->limit(1)
+				->get()->getRowArray();
+			if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+			$alMulk = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => '4 Surat'))
+				->where(array('surat' => 'Al-Mulk'))
+				->where('tanggal >=', $tglAwal)
+				->where('tanggal <=', $tglAkhir)
+				->limit(1)
+				->get()->getRowArray();
+			if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+			$Yaasin = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => '4 Surat'))
+				->where(array('surat' => 'Yaasin'))
+				->where('tanggal >=', $tglAwal)
+				->where('tanggal <=', $tglAkhir)
+				->limit(1)
+				->get()->getRowArray();
+			if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+			//Juz 30
+			$juz_30 = $this->hafalanModel
+			->where(array('id_santri' => $s['id_santri']))
+			->where(array('jenis' => 'Juz 30'))
+			->get()->getResultArray();
+			if (count($juz_30) < 1) {
+				$juz_30[0] = [
+					'surat' 	 => " ",
+					'ayat_akhir' => " "
+				];
+			} else {
+				$dates = array_column($juz_30, 'tanggal');
+				$names = array_column($juz_30, 'id_hafalan');
+				array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+			}
+			// Memasukkan data
+			$s['prestasi'] = [
+				'arRahman' => $arRahman,
+				'alWaaqiah' => $alWaaqiah,
+				'alMulk' => $alMulk,
+				'Yaasin' => $Yaasin,
 				'Juz30' => $juz_30[0]
 			];
 			$santri[$i] = $s;
@@ -494,12 +585,146 @@ class Main extends BaseController
 	}
 	public function generatepdfPrestasi()
 	{
+		// mengolah data
+		$tglAwal = session()->get('tglAwalPDF');
+		$tglAkhir = session()->get('tglAkhirPDF');
+		$santri = $this->santriModel->findAll();
+		$i = 0;
+		if (($tglAwal === 'kosong') && ($tglAkhir === 'kosong')) {
+			foreach ($santri as $s) {
+				// 4 Surat
+				$arRahman = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Ar-Rahman'))
+					->orderBy('tanggal', 'DESC')
+					->limit(1)
+					->get()->getRowArray();
+				if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+				$alWaaqiah = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Al-Waaqi\'ah'))
+					->orderBy('tanggal', 'DESC')
+					->limit(1)
+					->get()->getRowArray();
+				if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+				$alMulk = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Al-Mulk'))
+					->orderBy('tanggal', 'DESC')
+					->limit(1)
+					->get()->getRowArray();
+				if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+				$Yaasin = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Yaasin'))
+					->orderBy('tanggal', 'DESC')
+					->limit(1)
+					->get()->getRowArray();
+				if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+				//Juz 30
+				$juz_30 = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => 'Juz 30'))
+				->get()->getResultArray();
+				if (count($juz_30) < 1) {
+					$juz_30[0] = [
+						'surat' 	 => " ",
+						'ayat_akhir' => " "
+					];
+				} else {
+					$dates = array_column($juz_30, 'tanggal');
+					$names = array_column($juz_30, 'id_hafalan');
+					array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+				}
+				// Memasukkan data
+				$s['prestasi'] = [
+					'arRahman' => $arRahman,
+					'alWaaqiah' => $alWaaqiah,
+					'alMulk' => $alMulk,
+					'Yaasin' => $Yaasin,
+					'Juz30' => $juz_30[0]
+				];
+				$santri[$i] = $s;
+				$i++;
+			}
+		} else {
+			foreach ($santri as $s) {
+				// 4 Surat
+				$arRahman = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Ar-Rahman'))
+					->where('tanggal >=', $tglAwal)
+					->where('tanggal <=', $tglAkhir)
+					->limit(1)
+					->get()->getRowArray();
+				if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+				$alWaaqiah = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Al-Waaqi\'ah'))				
+					->where('tanggal >=', $tglAwal)
+					->where('tanggal <=', $tglAkhir)
+					->limit(1)
+					->get()->getRowArray();
+				if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+				$alMulk = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Al-Mulk'))
+					->where('tanggal >=', $tglAwal)
+					->where('tanggal <=', $tglAkhir)
+					->limit(1)
+					->get()->getRowArray();
+				if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+				$Yaasin = $this->hafalanModel
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => '4 Surat'))
+					->where(array('surat' => 'Yaasin'))
+					->where('tanggal >=', $tglAwal)
+					->where('tanggal <=', $tglAkhir)
+					->limit(1)
+					->get()->getRowArray();
+				if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+				//Juz 30
+				$juz_30 = $this->hafalanModel
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => 'Juz 30'))
+				->where('tanggal >=', $tglAwal)
+				->where('tanggal <=', $tglAkhir)
+				->get()->getResultArray();
+				if (count($juz_30) < 1) {
+					$juz_30[0] = [
+						'surat' 	 => " ",
+						'ayat_akhir' => " "
+					];
+				} else {
+					$dates = array_column($juz_30, 'tanggal');
+					$names = array_column($juz_30, 'id_hafalan');
+					array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+				}
+				$s['prestasi'] = [
+					'arRahman' => $arRahman,
+					'alWaaqiah' => $alWaaqiah,
+					'alMulk' => $alMulk,
+					'Yaasin' => $Yaasin,
+					'Juz30' => $juz_30[0]
+				];
+				$santri[$i] = $s;
+				$i++;
+			}
+		}
+		// print
 		$mpdf = new \Mpdf\Mpdf([
 			'mode' => 'c',
 			'orientation' => 'L',
 		]);
 
-		$data = view('pdf-data-prestasi', []);
+		$data = view('cetak-prestasi', ['santri' => $santri]);
 		$mpdf->WriteHTML($data);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
