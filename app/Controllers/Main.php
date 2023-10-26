@@ -310,8 +310,8 @@ class Main extends BaseController
 	}
 	public function dataPrestasi(): string
 	{
-		session()->set('tglAwalPDF','kosong');
-		session()->set('tglAkhirPDF','kosong');
+		session()->set('tglAwalPDF', 'kosong');
+		session()->set('tglAkhirPDF', 'kosong');
 		$santri = $this->santriModel->findAll();
 		$i = 0;
 		foreach ($santri as $s) {
@@ -323,7 +323,9 @@ class Main extends BaseController
 				->orderBy('tanggal', 'DESC')
 				->limit(1)
 				->get()->getRowArray();
-			if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+			if ($arRahman === null) {
+				$arRahman = ['ayat_akhir' => " "];
+			}
 			$alWaaqiah = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
@@ -331,7 +333,9 @@ class Main extends BaseController
 				->orderBy('tanggal', 'DESC')
 				->limit(1)
 				->get()->getRowArray();
-			if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+			if ($alWaaqiah === null) {
+				$alWaaqiah = ['ayat_akhir' => " "];
+			}
 			$alMulk = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
@@ -339,7 +343,9 @@ class Main extends BaseController
 				->orderBy('tanggal', 'DESC')
 				->limit(1)
 				->get()->getRowArray();
-			if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+			if ($alMulk === null) {
+				$alMulk = ['ayat_akhir' => " "];
+			}
 			$Yaasin = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
@@ -347,12 +353,14 @@ class Main extends BaseController
 				->orderBy('tanggal', 'DESC')
 				->limit(1)
 				->get()->getRowArray();
-			if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+			if ($Yaasin === null) {
+				$Yaasin = ['ayat_akhir' => " "];
+			}
 			//Juz 30
 			$juz_30 = $this->hafalanModel
-			->where(array('id_santri' => $s['id_santri']))
-			->where(array('jenis' => 'Juz 30'))
-			->get()->getResultArray();
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => 'Juz 30'))
+				->get()->getResultArray();
 			if (count($juz_30) < 1) {
 				$juz_30[0] = [
 					'surat' 	 => " ",
@@ -381,8 +389,8 @@ class Main extends BaseController
 	{
 		$tglAwal  = $this->request->getVar('tgl-awal');
 		$tglAkhir = $this->request->getVar('tgl-akhir');
-		session()->set('tglAwalPDF',$tglAwal);
-		session()->set('tglAkhirPDF',$tglAkhir);
+		session()->set('tglAwalPDF', $tglAwal);
+		session()->set('tglAkhirPDF', $tglAkhir);
 		$santri = $this->santriModel->findAll();
 		$i = 0;
 		foreach ($santri as $s) {
@@ -395,16 +403,20 @@ class Main extends BaseController
 				->where('tanggal <=', $tglAkhir)
 				->limit(1)
 				->get()->getRowArray();
-			if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+			if ($arRahman === null) {
+				$arRahman = ['ayat_akhir' => " "];
+			}
 			$alWaaqiah = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
-				->where(array('surat' => 'Al-Waaqi\'ah'))				
+				->where(array('surat' => 'Al-Waaqi\'ah'))
 				->where('tanggal >=', $tglAwal)
 				->where('tanggal <=', $tglAkhir)
 				->limit(1)
 				->get()->getRowArray();
-			if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+			if ($alWaaqiah === null) {
+				$alWaaqiah = ['ayat_akhir' => " "];
+			}
 			$alMulk = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
@@ -413,7 +425,9 @@ class Main extends BaseController
 				->where('tanggal <=', $tglAkhir)
 				->limit(1)
 				->get()->getRowArray();
-			if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+			if ($alMulk === null) {
+				$alMulk = ['ayat_akhir' => " "];
+			}
 			$Yaasin = $this->hafalanModel
 				->where(array('id_santri' => $s['id_santri']))
 				->where(array('jenis' => '4 Surat'))
@@ -422,12 +436,14 @@ class Main extends BaseController
 				->where('tanggal <=', $tglAkhir)
 				->limit(1)
 				->get()->getRowArray();
-			if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+			if ($Yaasin === null) {
+				$Yaasin = ['ayat_akhir' => " "];
+			}
 			//Juz 30
 			$juz_30 = $this->hafalanModel
-			->where(array('id_santri' => $s['id_santri']))
-			->where(array('jenis' => 'Juz 30'))
-			->get()->getResultArray();
+				->where(array('id_santri' => $s['id_santri']))
+				->where(array('jenis' => 'Juz 30'))
+				->get()->getResultArray();
 			if (count($juz_30) < 1) {
 				$juz_30[0] = [
 					'surat' 	 => " ",
@@ -546,7 +562,7 @@ class Main extends BaseController
 		]);
 		return redirect()->to('/settings');
 	}
-	public function deleteFoto()
+	public function deleteFotoPengajar()
 	{
 		unlink('./img/' . session('foto'));
 		$this->pengajarModel->save([
@@ -555,6 +571,16 @@ class Main extends BaseController
 		]);
 		session()->set('foto', '');
 		return redirect()->to('/settings');
+	}
+	public function deleteFotoSantri($id_santri)
+	{
+		$santri = $this->santriModel->where(array('id_santri' => $id_santri))->get()->getRowArray();
+		unlink('./img/' . $santri['foto']);
+		$this->santriModel->save([
+			'id_santri' => $id_santri,
+			'foto' => ''
+		]);
+		return redirect()->back();
 	}
 	public function generatepdf($id_santri, $jenis)
 	{
@@ -585,9 +611,39 @@ class Main extends BaseController
 	}
 	public function generatepdfPrestasi()
 	{
-		// mengolah data
+		//setting format waktu
+		$locale = 'id_ID';
+		$dateFormat = \IntlDateFormatter::FULL;
+		$dateFormatter = new \IntlDateFormatter($locale, $dateFormat, \IntlDateFormatter::NONE);
+
+
 		$tglAwal = session()->get('tglAwalPDF');
 		$tglAkhir = session()->get('tglAkhirPDF');
+
+		//menetapkan bulan & tahun
+		if (($tglAwal === 'kosong') && ($tglAkhir === 'kosong')) {
+			$date = date("Y-m-d");
+			$timestamp = strtotime($date); // Mengonversi tanggal ke timestamp
+			$namaBulan = $dateFormatter->format($timestamp);
+			$parts = explode(' ', $namaBulan);
+			$month = $parts[2];
+			$year = $parts[3];
+			$waktu = $month; // Output: October
+		} else {
+			$waktu = [$tglAwal, $tglAkhir];
+			$j = 0;
+			foreach ($waktu as $t) {
+				$date = $t;
+				$timestamp = strtotime($date); // Mengonversi tanggal ke timestamp
+				$namaBulan = $dateFormatter->format($timestamp);
+				$parts = explode(' ', $namaBulan);
+				$month = $parts[2];
+				$year = $parts[3];
+				$waktu[$j++] = $month; // Output: October
+			}
+		}
+
+		// mengolah data
 		$santri = $this->santriModel->findAll();
 		$i = 0;
 		if (($tglAwal === 'kosong') && ($tglAkhir === 'kosong')) {
@@ -600,7 +656,9 @@ class Main extends BaseController
 					->orderBy('tanggal', 'DESC')
 					->limit(1)
 					->get()->getRowArray();
-				if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+				if ($arRahman === null) {
+					$arRahman = ['ayat_akhir' => " "];
+				}
 				$alWaaqiah = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
@@ -608,7 +666,9 @@ class Main extends BaseController
 					->orderBy('tanggal', 'DESC')
 					->limit(1)
 					->get()->getRowArray();
-				if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+				if ($alWaaqiah === null) {
+					$alWaaqiah = ['ayat_akhir' => " "];
+				}
 				$alMulk = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
@@ -616,7 +676,9 @@ class Main extends BaseController
 					->orderBy('tanggal', 'DESC')
 					->limit(1)
 					->get()->getRowArray();
-				if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+				if ($alMulk === null) {
+					$alMulk = ['ayat_akhir' => " "];
+				}
 				$Yaasin = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
@@ -624,12 +686,14 @@ class Main extends BaseController
 					->orderBy('tanggal', 'DESC')
 					->limit(1)
 					->get()->getRowArray();
-				if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+				if ($Yaasin === null) {
+					$Yaasin = ['ayat_akhir' => " "];
+				}
 				//Juz 30
 				$juz_30 = $this->hafalanModel
-				->where(array('id_santri' => $s['id_santri']))
-				->where(array('jenis' => 'Juz 30'))
-				->get()->getResultArray();
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => 'Juz 30'))
+					->get()->getResultArray();
 				if (count($juz_30) < 1) {
 					$juz_30[0] = [
 						'surat' 	 => " ",
@@ -662,16 +726,20 @@ class Main extends BaseController
 					->where('tanggal <=', $tglAkhir)
 					->limit(1)
 					->get()->getRowArray();
-				if ($arRahman === null) { $arRahman = [ 'ayat_akhir' => " "];}
+				if ($arRahman === null) {
+					$arRahman = ['ayat_akhir' => " "];
+				}
 				$alWaaqiah = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
-					->where(array('surat' => 'Al-Waaqi\'ah'))				
+					->where(array('surat' => 'Al-Waaqi\'ah'))
 					->where('tanggal >=', $tglAwal)
 					->where('tanggal <=', $tglAkhir)
 					->limit(1)
 					->get()->getRowArray();
-				if ($alWaaqiah === null) { $alWaaqiah = [ 'ayat_akhir' => " "];}
+				if ($alWaaqiah === null) {
+					$alWaaqiah = ['ayat_akhir' => " "];
+				}
 				$alMulk = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
@@ -680,7 +748,9 @@ class Main extends BaseController
 					->where('tanggal <=', $tglAkhir)
 					->limit(1)
 					->get()->getRowArray();
-				if ($alMulk === null) { $alMulk = [ 'ayat_akhir' => " "];}
+				if ($alMulk === null) {
+					$alMulk = ['ayat_akhir' => " "];
+				}
 				$Yaasin = $this->hafalanModel
 					->where(array('id_santri' => $s['id_santri']))
 					->where(array('jenis' => '4 Surat'))
@@ -689,14 +759,16 @@ class Main extends BaseController
 					->where('tanggal <=', $tglAkhir)
 					->limit(1)
 					->get()->getRowArray();
-				if ($Yaasin === null) { $Yaasin = [ 'ayat_akhir' => " "];}
+				if ($Yaasin === null) {
+					$Yaasin = ['ayat_akhir' => " "];
+				}
 				//Juz 30
 				$juz_30 = $this->hafalanModel
-				->where(array('id_santri' => $s['id_santri']))
-				->where(array('jenis' => 'Juz 30'))
-				->where('tanggal >=', $tglAwal)
-				->where('tanggal <=', $tglAkhir)
-				->get()->getResultArray();
+					->where(array('id_santri' => $s['id_santri']))
+					->where(array('jenis' => 'Juz 30'))
+					->where('tanggal >=', $tglAwal)
+					->where('tanggal <=', $tglAkhir)
+					->get()->getResultArray();
 				if (count($juz_30) < 1) {
 					$juz_30[0] = [
 						'surat' 	 => " ",
@@ -723,12 +795,21 @@ class Main extends BaseController
 			'mode' => 'c',
 			'orientation' => 'L',
 		]);
+		$data = view('cetak-prestasi', [
+			'santri' => $santri,
+			'waktu' => $waktu,
+			'tahun' => $year
+		]);
 
-		$data = view('cetak-prestasi', ['santri' => $santri]);
 		$mpdf->WriteHTML($data);
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
 		// nama file ketika di save: format penamaan data-prestasi_[tanggalAwal]_[tanggalAkhir].pdf
-		$mpdf->Output('data-prestasi.pdf', 'I');
+		if (($tglAwal === 'kosong') && ($tglAkhir === 'kosong')) {
+			$formatTgl = '_';
+		} else {
+			$formatTgl = '_' . $tglAwal . '_' . $tglAkhir;
+		}
+		$mpdf->Output('data-prestasi' . $formatTgl . '.pdf', 'I');
 	}
 }
