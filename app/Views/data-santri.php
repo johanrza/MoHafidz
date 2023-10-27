@@ -441,22 +441,20 @@
                             </span> -->
                         </div>
                         <div class="col-auto">
-                          <label for="fileInput" class="btn"> Ganti Foto
-                            <input type="file" id="fileInput" class="d-none" name="ubah-formFile" accept="image/*"
-                            onchange="document.getElementById('gantiFoto').src = window.URL.createObjectURL(this.files[0])" />
+                          <label for="fileInput-<?= $s['id_santri']; ?>" class="btn"> Ganti Foto
+                            <input type="file" id="fileInput-<?= $s['id_santri']; ?>" class="d-none" name="ubah-formFile" accept="image/*" onchange="document.getElementById('gantiFoto-<?= $s['id_santri']; ?>').src = window.URL.createObjectURL(this.files[0])" />
                             <input type="hidden" name="ubah-formFoto" value="<?= $s['foto']; ?>" />
                           </label>
                         </div>
                         <div class="col-auto mt-2">
-                          <a href="/settings/deleteFoto" onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');" class="btn btn-outline-danger">
+                          <a href="/data-santri/deleteFotoSantri/<?= $s['id_santri']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');" class="btn btn-outline-danger">
                             Hapus Foto
                           </a>
                         </div>
                       </div>
                       <!-- yang lama -->
                       <!-- <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile" />
-                      <input type="hidden" name="ubah-formFoto" value="<?php //echo $s['foto']; 
-                                                                        ?>" /> -->
+                      <input type="hidden" name="ubah-formFoto" value="" /> -->
                     </div>
                     <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
                     <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap" value="<?= $s['nama']; ?>" required />

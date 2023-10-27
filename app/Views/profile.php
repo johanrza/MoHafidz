@@ -567,7 +567,7 @@
                         </button>
 
                         <!-- button PDF Juz 30 -->
-                        <a class="btn btn-secondary" href="pdf/4surat/<?= $santri['id_santri'] ?>/juz-30" target="_blank">
+                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30" target="_blank">
                           <!-- download icon -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
