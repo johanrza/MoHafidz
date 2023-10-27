@@ -53,7 +53,7 @@ $routes->get('/settings/deleteFoto', 'Main::deleteFotoPengajar');
 $routes->get('/data-santri/deleteFotoSantri/(:num)', 'Main::deleteFotoSantri/$1');
 
 // POST DATA
-$routes->post('/index/pencarian', 'Main::indexPencarian');
+$routes->post('/pencarian', 'Main::indexPencarian');
 $routes->post('/login/pengajar', 'Main::loginPengajar');
 $routes->post('/login/master', 'Main::loginMaster');
 $routes->post('/masterDashboard/addPengajar', 'Main::addPengajar');

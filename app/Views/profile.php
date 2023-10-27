@@ -60,28 +60,23 @@
     <!-- Sidebar -->
     <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
-          aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
           <a href=".">
-            <img src="./dist/img/logo-text-mohafidz.svg" style="height: 2.8rem; width: auto" class="navbar-brand-image"
-              alt="Mohafidz logo" />
+            <img src="./dist/img/logo-text-mohafidz.svg" style="height: 2.8rem; width: auto" class="navbar-brand-image" alt="Mohafidz logo" />
           </a>
         </h1>
 
         <!-- ketika layar responsive/ukuran mobile -->
         <div class="navbar-nav flex-row d-lg-none">
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-              aria-label="Open user menu">
+            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
               <?php if (session('foto') !== '') { ?>
-                <span class="avatar avatar-sm"
-                  style="background-image: url(<?php echo base_url('/img/' . session('foto')) ?>)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(<?php echo base_url('/img/' . session('foto')) ?>)"></span>
               <?php } else { ?>
-                <span class="avatar avatar-sm"
-                  style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)"></span>
               <?php } ?>
               <div class="d-none d-xl-block ps-2">
                 <div>
@@ -93,25 +88,20 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
-                data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24"
-                  stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
                 </svg>
                 Dark Mode
               </a>
-              <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
-                data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24"
-                  stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                  <path
-                    d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                  <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
                 </svg>
                 Light Mode
               </a>
@@ -130,10 +120,8 @@
           <ul class="navbar-nav pt-lg-3">
             <li class="nav-item py-2">
               <a class="nav-link" href="./dashboard">
-                <span
-                  class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
                     <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
@@ -146,9 +134,7 @@
             <li class="nav-item py-2">
               <a class="nav-link" href="./data-santri">
                 <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- users -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -162,9 +148,7 @@
             <li class="nav-item py-2">
               <a class="nav-link" href="./data-prestasi">
                 <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- users -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -184,21 +168,17 @@
       <div class="container-xl">
         <div class="navbar-nav w-100 justify-content-between">
           <div class="d-none d-md-flex me-5">
-            <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
-              data-bs-toggle="tooltip" data-bs-placement="bottom">
+            <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
               <!-- icon moon -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24"
-                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
               </svg>
               Dark Mode
             </a>
-            <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
-              data-bs-toggle="tooltip" data-bs-placement="bottom">
+            <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
               <!-- icon sun -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24"
-                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
                 <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
@@ -207,14 +187,11 @@
             </a>
           </div>
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-              aria-label="Open user menu">
+            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
               <?php if (session('foto') !== '') { ?>
-                <span class="avatar avatar-sm"
-                  style="background-image: url(<?php echo base_url('/img/' . session('foto')) ?>)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(<?php echo base_url('/img/' . session('foto')) ?>)"></span>
               <?php } else { ?>
-                <span class="avatar avatar-sm"
-                  style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)"></span>
               <?php } ?>
               <div class="d-none d-xl-block ps-2">
                 <div>
@@ -252,9 +229,7 @@
                 <div class="d-none d-lg-block">
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-edit-santri">
                     <!-- edit svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24"
-                      height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
                       <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
@@ -263,13 +238,9 @@
                     Ubah Profile
                   </button>
                   <button class="btn btn-danger">
-                    <a style="text-decoration: none; color: white;"
-                      href="/profile/deleteSantri/<?= $santri['id_santri']; ?>"
-                      onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')">
+                    <a style="text-decoration: none; color: white;" href="/profile/deleteSantri/<?= $santri['id_santri']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')">
                       <!-- trash svg -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24"
-                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M4 7l16 0"></path>
                         <path d="M10 11l0 6"></path>
@@ -284,12 +255,9 @@
 
                 <!-- responsive button -->
                 <div class="d-lg-none">
-                  <button class="btn btn-primary" aria-label="Ubah Profile" data-bs-toggle="modal"
-                    data-bs-target="#modal-edit-santri">
+                  <button class="btn btn-primary" aria-label="Ubah Profile" data-bs-toggle="modal" data-bs-target="#modal-edit-santri">
                     <!-- edit svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit m-0" width="24"
-                      height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
                       <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
@@ -325,11 +293,9 @@
                 <div class="row justify-content-center">
                   <div class="col-md-3 text-center">
                     <?php if ($santri['foto'] !== '') { ?>
-                      <img src="<?php echo base_url('/img/' . $santri['foto']) ?>" class="img-thumbnail"
-                        alt="Blank Person" />
+                      <img src="<?php echo base_url('/img/' . $santri['foto']) ?>" class="img-thumbnail" alt="Blank Person" />
                     <?php } else { ?>
-                      <img src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
-                        class="img-thumbnail" alt="Blank Person" />
+                      <img src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg" class="img-thumbnail" alt="Blank Person" />
                     <?php } ?>
                   </div>
                   <div class="col-md-4 mt-lg-3 mt-sm-5 mt-5">
@@ -379,24 +345,18 @@
                   <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="m-0">4 Surat</h4>
                     <div class="btn-list">
-                      <button id="tambah-4surat" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
-                        data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
+                      <button id="tambah-4surat" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
                         <!-- plus icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                          stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                           <path d="M12 5l0 14" />
                           <path d="M5 12l14 0" />
                         </svg>
                         Tambah Data Hafalan
                       </button>
-                      <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                        data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                      <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                          stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                           <path d="M12 5l0 14" />
                           <path d="M5 12l14 0" />
@@ -404,12 +364,9 @@
                       </button>
 
                       <!-- button PDF 4 Surat -->
-                      <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat"
-                        target="_blank">
+                      <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat" target="_blank">
                         <!-- download icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24"
-                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                           <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                           <path d="M7 11l5 5l5 -5"></path>
@@ -440,8 +397,8 @@
                           <tbody>
                             <?php
                             $i = 1;
-                            foreach ($empat_surat as $surat):
-                              ?>
+                            foreach ($empat_surat as $surat) :
+                            ?>
                               <tr>
                                 <td>
                                   <?= $i++; ?>
@@ -452,11 +409,11 @@
                                 <td>
                                   <?= $surat['surat'] ?>
                                 </td>
-                                <?php if ($surat['ayat_awal'] === $surat['ayat_akhir']): ?>
+                                <?php if ($surat['ayat_awal'] === $surat['ayat_akhir']) : ?>
                                   <td>
                                     <?= $surat['ayat_awal'] ?>
                                   </td>
-                                <?php else: ?>
+                                <?php else : ?>
                                   <td>
                                     <?= $surat['ayat_awal'] ?> -
                                     <?= $surat['ayat_akhir'] ?>
@@ -474,21 +431,9 @@
                                 <td>
                                   <!-- responsive button -->
                                   <div class="btn-list">
-                                    <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan"
-                                      data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri"
-                                      data-edit-hafalan="true" data-edit-user-id="<?= $surat['id_santri'] ?>"
-                                      data-edit-id-hafalan="<?= $surat['id_hafalan'] ?>"
-                                      data-edit-tanggal="<?= $surat['tanggal'] ?>" data-edit-jenis="4 Surat"
-                                      data-edit-surat="<?= $surat['surat'] ?>"
-                                      data-edit-ayat-awal="<?= $surat['ayat_awal'] ?>"
-                                      data-edit-ayat-akhir="<?= $surat['ayat_akhir'] ?>"
-                                      data-edit-ket-s="<?= $surat['keterangan_s'] ?>"
-                                      data-edit-murojaah="<?= $surat['murojaah'] ?>"
-                                      data-edit-ket-m="<?= $surat['keterangan_m'] ?>">
+                                    <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" data-edit-hafalan="true" data-edit-user-id="<?= $surat['id_santri'] ?>" data-edit-id-hafalan="<?= $surat['id_hafalan'] ?>" data-edit-tanggal="<?= $surat['tanggal'] ?>" data-edit-jenis="4 Surat" data-edit-surat="<?= $surat['surat'] ?>" data-edit-ayat-awal="<?= $surat['ayat_awal'] ?>" data-edit-ayat-akhir="<?= $surat['ayat_akhir'] ?>" data-edit-ket-s="<?= $surat['keterangan_s'] ?>" data-edit-murojaah="<?= $surat['murojaah'] ?>" data-edit-ket-m="<?= $surat['keterangan_m'] ?>">
                                       <!-- edit svg -->
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
                                         <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
@@ -498,9 +443,7 @@
                                     </button>
                                     <button class="btn btn-danger btn-icon" onclick="location.href='/profile/deleteHafalan/<?= $surat['id_hafalan']; ?>'" aria-label="Hapus Hafalan">
                                       <!-- trash svg -->
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M4 7l16 0"></path>
                                         <path d="M10 11l0 6"></path>
@@ -508,7 +451,7 @@
                                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                         <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                       </svg>
-                                    </a>
+                                      </a>
                                   </div>
                                   <!-- end responsive button -->
                                 </td>
@@ -541,25 +484,18 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">30 Juz</h4>
                       <div class="btn-list">
-                        <button id="tambah-juz30" class="btn btn-primary d-none d-sm-inline-block"
-                          data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri"
-                          aria-label="Tambah Data Hafalan">
+                        <button id="tambah-juz30" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
                           <!-- plus icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
                           </svg>
                           Tambah Data Hafalan
                         </button>
-                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
                           <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
@@ -569,9 +505,7 @@
                         <!-- button PDF Juz 30 -->
                         <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30" target="_blank">
                           <!-- download icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                             <path d="M7 11l5 5l5 -5"></path>
@@ -602,8 +536,8 @@
                             <tbody>
                               <?php
                               $j = 1;
-                              foreach ($juz_30 as $juz):
-                                ?>
+                              foreach ($juz_30 as $juz) :
+                              ?>
                                 <tr>
                                   <td>
                                     <?= $j++; ?>
@@ -614,11 +548,11 @@
                                   <td>
                                     <?= $juz['surat'] ?>
                                   </td>
-                                  <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']): ?>
+                                  <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']) : ?>
                                     <td>
                                       <?= $juz['ayat_awal'] ?>
                                     </td>
-                                  <?php else: ?>
+                                  <?php else : ?>
                                     <td>
                                       <?= $juz['ayat_awal'] ?> -
                                       <?= $juz['ayat_akhir'] ?>
@@ -636,36 +570,19 @@
                                   <td>
                                     <!-- responsive button -->
                                     <div class="btn-list">
-                                      <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan"
-                                        data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri"
-                                        data-edit-hafalan="true" data-edit-user-id="XTY21312"
-                                        data-edit-id-hafalan="<?= $juz['id_hafalan'] ?>"
-                                        data-edit-tanggal="<?= $juz['tanggal'] ?>" data-edit-jenis="Juz 30"
-                                        data-edit-surat="<?= $juz['surat'] ?>"
-                                        data-edit-ayat-awal="<?= $juz['ayat_awal'] ?>"
-                                        data-edit-ayat-akhir="<?= $juz['ayat_akhir'] ?>"
-                                        data-edit-ket-s="<?= $juz['keterangan_s'] ?>"
-                                        data-edit-murojaah="<?= $juz['murojaah'] ?>"
-                                        data-edit-ket-m="<?= $juz['keterangan_m'] ?>">
+                                      <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" data-edit-hafalan="true" data-edit-user-id="XTY21312" data-edit-id-hafalan="<?= $juz['id_hafalan'] ?>" data-edit-tanggal="<?= $juz['tanggal'] ?>" data-edit-jenis="Juz 30" data-edit-surat="<?= $juz['surat'] ?>" data-edit-ayat-awal="<?= $juz['ayat_awal'] ?>" data-edit-ayat-akhir="<?= $juz['ayat_akhir'] ?>" data-edit-ket-s="<?= $juz['keterangan_s'] ?>" data-edit-murojaah="<?= $juz['murojaah'] ?>" data-edit-ket-m="<?= $juz['keterangan_m'] ?>">
                                         <!-- edit svg -->
-                                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                          width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                          stroke="currentColor" fill="none" stroke-linecap="round"
-                                          stroke-linejoin="round">
+                                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                           <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                          <path
-                                            d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                          <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
                                           </path>
                                           <path d="M16 5l3 3"></path>
                                         </svg>
                                       </button>
                                       <button class="btn btn-danger btn-icon" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')" aria-label="Hapus Profile">
                                         <!-- trash svg -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                          width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                          stroke="currentColor" fill="none" stroke-linecap="round"
-                                          stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                           <path d="M4 7l16 0"></path>
                                           <path d="M10 11l0 6"></path>
@@ -673,7 +590,7 @@
                                           <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                           <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                         </svg>
-                                      </a>
+                                        </a>
                                     </div>
                                     <!-- end responsive button -->
                                   </td>
@@ -706,90 +623,68 @@
         </div>
 
         <!-- modal edit profile santri -->
-        <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false"
-          tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Ubah Data Santri</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form action="/profile/updateProfile/<?= $santri['id_santri']; ?>" method="post" autocomplete="off"
-                enctype="multipart/form-data">
+              <form action="/profile/updateProfile/<?= $santri['id_santri']; ?>" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="mb-3">
                     <div class="row align-items-center">
                       <label for="ubah-formFile" class="form-label">Foto Santri</label>
                       <div class="col-auto">
-                        <span class="avatar avatar-xl"
-                          style="background-image: url(<?php echo base_url('/img/' . $santri['foto']) ?>)">
-                          <img class="avatar avatar-xl" id="updateFoto"
-                            src="<?php echo base_url('/img/' . $santri['foto']) ?>" style="object-fit: contain;">
-                        </span>
-
-                        <!-- kalo ga ada fotonya pakai blank picture -->
-                        <!-- <span class="avatar avatar-xl"
-                              style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)">
-                              <img class="avatar avatar-xl" id="updateFoto"
-                                src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
-                                style="object-fit:cover">
-                            </span> -->
+                        <?php if ($santri['foto'] !== '') { ?>
+                          <span>
+                            <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>" src="<?php echo base_url('/img/' . $santri['foto']) ?>" style="object-fit: contain;">
+                          </span>
+                        <?php } else { ?>
+                          <span>
+                            <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>" src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg" style="object-fit: contain;">
+                          </span>
+                        <?php } ?>
                       </div>
-
                       <div class="col-auto">
-                        <label for="fileInput" class="btn"> Ganti Foto
-                          <input type="file" id="fileInput" class="d-none" name="tambah-formFile" accept="image/*"
-                            onchange="document.getElementById('updateFoto').src = window.URL.createObjectURL(this.files[0])" />
-                          <input type="hidden" name="ubah-formFoto" value="<?= session('foto') ?>" />
+                        <label for="fileInput-<?= $santri['id_santri']; ?>" class="btn"> Ganti Foto
+                          <input type="file" id="fileInput-<?= $santri['id_santri']; ?>" class="d-none" name="ubah-formFile" accept="image/*" onchange="document.getElementById('gantiFoto-<?= $santri['id_santri']; ?>').src = window.URL.createObjectURL(this.files[0])" />
+                          <input type="hidden" name="ubah-formFoto" value="<?= $santri['foto']; ?>" />
                         </label>
                       </div>
                       <div class="col-auto mt-2">
-                        <a href="/settings/deleteFoto"
-                          onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');"
-                          class="btn btn-outline-danger">
+                        <a href="/data-santri/deleteFotoSantri/<?= $santri['id_santri']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');" class="btn btn-outline-danger">
                           Hapus Foto
                         </a>
                       </div>
                     </div>
-
-                    <!-- yang lama -->
-                    <input type="file" class="form-control" id="ubah-formFile" name="ubah-formFile"
-                      value="<?= $santri['foto']; ?>" />
-                    <input type="hidden" name="ubah-formFoto" value="<?= $santri['foto']; ?>" />
                   </div>
                   <div class="mb-3">
                     <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap"
-                      value="<?= $santri['nama']; ?>" required />
+                    <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap" value="<?= $santri['nama']; ?>" required />
                   </div>
                   <div class="mb-3">
                     <label for="ubah-alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat"
-                      value="<?= $santri['alamat']; ?>" required />
+                    <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat" value="<?= $santri['alamat']; ?>" required />
                   </div>
                   <div class="mb-3">
                     <label for="ubah-nama-wali" class="form-label">Nama Wali Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali"
-                      value="<?= $santri['wali']; ?>" required />
+                    <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali" value="<?= $santri['wali']; ?>" required />
                   </div>
                   <div class="mb-3">
                     <label for="ubah-ttl" class="form-label">Tanggal Lahir</label>
-                    <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl"
-                      value="<?= $santri['tanggal_lahir']; ?>" required />
+                    <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl" value="<?= $santri['tanggal_lahir']; ?>" required />
                   </div>
                   <div class="mb-3">
                     <label for="ubah-kelas" class="form-label">Kelas</label>
-                    <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas"
-                      value="<?= $santri['kelas']; ?>" required />
+                    <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas" value="<?= $santri['kelas']; ?>" required />
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
                   <button class="btn btn-primary ms-auto" type="submit" name="submit-ubah">
                     <!-- ubah svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24"
-                      height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
                       <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
@@ -805,8 +700,7 @@
         <!-- akhir modal edit  profile-->
 
         <!-- modal tambah/edit hafalan santri -->
-        <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false"
-          tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -814,8 +708,7 @@
                 <small id="sub-modal-title-hafalan">4 Surat</small>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form id="form-hafalan" action="/profile/addHafalan/<?= $santri['id_santri'] ?>" method="post"
-                autocomplete="off" enctype="multipart/form-data">
+              <form id="form-hafalan" action="/profile/addHafalan/<?= $santri['id_santri'] ?>" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="tanggal-hafalan" class="form-label">Tanggal</label>
@@ -823,13 +716,11 @@
                   </div>
                   <div class="mb-3">
                     <label for="jenis-hafalan" class="form-label">Jenis Hafalan</label>
-                    <input type="text" class="form-control" id="jenis-hafalan" name="jenis-hafalan" value="4 Surat"
-                      required disabled />
+                    <input type="text" class="form-control" id="jenis-hafalan" name="jenis-hafalan" value="4 Surat" required disabled />
                   </div>
                   <div class="mb-3">
                     <label for="surat-hafalan" class="form-label">Surat</label>
-                    <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" name="surat-hafalan"
-                      required>
+                    <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" name="surat-hafalan" required>
                       <option selected disabled hidden>Pilih Surat</option>
                       <option value="Ar-Rahman">Ar-Rahman</option>
                       <option value="Al-Waaqi'ah">Al-Waaqi'ah</option>
@@ -841,8 +732,7 @@
                     <div class="row">
                       <div class="col">
                         <label for="ayat-start-hafalan" class="form-label">Ayat Awal</label>
-                        <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal"
-                          name="ayat-start-hafalan" required>
+                        <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal" name="ayat-start-hafalan" required>
                           <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
                         </select>
                       </div>
@@ -851,8 +741,7 @@
                       </div>
                       <div class="col">
                         <label for="ayat-start-hafalan" class="form-label">Ayat Akhir</label>
-                        <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir"
-                          name="ayat-end-hafalan" required>
+                        <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir" name="ayat-end-hafalan" required>
                           <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
                         </select>
                       </div>
@@ -899,7 +788,6 @@
       </div>
     </div>
   </div>
-
   <!-- Libs JS -->
   <script src="./dist/libs/jquery/jquery-3.7.0.js"></script>
   <script src="./dist/libs/datatables/jquery.dataTables.min.js"></script>
@@ -925,7 +813,7 @@
     }
   </script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('.table-responsive table').DataTable({
         ordering: false,
         searching: false,
@@ -941,7 +829,7 @@
   </script>
   <script>
     const tanggalElemen = document.querySelectorAll('[class="format-tanggal"]');
-    tanggalElemen.forEach(function (elemen) {
+    tanggalElemen.forEach(function(elemen) {
       const tanggal = elemen.textContent;
       const tanggalObj = new Date(tanggal);
       const formatTanggal = tanggalObj.toLocaleDateString('id-ID', {
@@ -1008,7 +896,7 @@
           totalVerses = 83;
           break;
 
-        // Juz 30 disini
+          // Juz 30 disini
         case 'An-Naba':
           totalVerses = 40;
           break;

@@ -430,15 +430,6 @@
                               <img class="avatar avatar-xl" id="gantiFoto-<?= $s['id_santri']; ?>" src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg" style="object-fit: contain;">
                             </span>
                           <?php } ?>
-
-
-                          <!-- kalo ga ada fotonya pakai blank picture -->
-                          <!-- <span class="avatar avatar-xl"
-                              style="background-image: url(https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg)">
-                              <img class="avatar avatar-xl" id="gantiFoto"
-                                src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
-                                style="object-fit:cover">
-                            </span> -->
                         </div>
                         <div class="col-auto">
                           <label for="fileInput-<?= $s['id_santri']; ?>" class="btn"> Ganti Foto

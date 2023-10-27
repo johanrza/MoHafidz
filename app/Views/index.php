@@ -78,7 +78,7 @@
             </div>
           <?php session()->remove('error');
           } ?>
-          <form action="index/pencarian" method="post" autocomplete="off" enctype="multipart/form-data">
+          <form action="/pencarian" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="input-group mb-3">
               <input type="text" class="form-control input-group-flat" placeholder="Masukan Nama Lengkap Santri" aria-label="Masukan Nama Lengkap Santri" aria-describedby="button-addon2" name="kata_kunci" />
               <button class="btn btn-primary" type="submit" id="button-addon2">
