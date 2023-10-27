@@ -36,6 +36,24 @@ class Main extends BaseController
 		session()->remove('error');
 		if (isset($pencarian)) {
 			session()->set('pencarian', $pencarian);
+			$id_santri = $pencarian['id_santri'];
+			$santri = $this->santriModel->find($id_santri);
+			$empat_surat = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => '4 Surat'))->get()->getResultArray();
+			$juz_30 = $this->hafalanModel->where(array('id_santri' => $id_santri))->where(array('jenis' => 'Juz 30'))->get()->getResultArray();
+
+			// Extract the 'date' and 'name' columns into separate arrays
+			$dates = array_column($juz_30, 'tanggal');
+			$names = array_column($juz_30, 'id_hafalan');
+
+			// Sort the multidimensional array based on the 'date' column
+			array_multisort($dates, SORT_DESC, $names, SORT_DESC, $juz_30);
+
+			$data = [
+				'santri' => $santri,
+				'empat_surat' => $empat_surat,
+				'juz_30' => $juz_30
+			];
+			return view('index', $data);
 			return redirect()->back();
 		} else {
 			session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
@@ -274,7 +292,9 @@ class Main extends BaseController
 			if ($replace !== '') {
 				$base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
 				$file_delete = "$base_dir/img/$replace";
-				if (file_exists($file_delete)) {unlink($file_delete);}
+				if (file_exists($file_delete)) {
+					unlink($file_delete);
+				}
 			}
 			$namaFoto = $foto->getRandomName();
 			$foto->move('img', $namaFoto);
@@ -642,6 +662,9 @@ class Main extends BaseController
 				$month = $parts[2];
 				$year = $parts[3];
 				$waktu[$j++] = $month; // Output: October
+			}
+			if ($waktu[0] === $waktu[1]) {
+				$waktu = $waktu[0];
 			}
 		}
 
