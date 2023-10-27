@@ -272,7 +272,9 @@ class Main extends BaseController
 			$replace = $this->request->getVar('ubah-formFoto');
 			// dd($replace);
 			if ($replace !== '') {
-				unlink('./img/' . $replace);
+				$base_dir = realpath($_SERVER["DOCUMENT_ROOT"]);
+				$file_delete = "$base_dir/img/$replace";
+				if (file_exists($file_delete)) {unlink($file_delete);}
 			}
 			$namaFoto = $foto->getRandomName();
 			$foto->move('img', $namaFoto);
