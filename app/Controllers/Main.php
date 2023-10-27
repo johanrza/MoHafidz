@@ -383,7 +383,7 @@ class Main extends BaseController
 			$i++;
 		}
 		$data = ['santri' => $santri];
-		return view('data-Prestasi', $data);
+		return view('data-prestasi', $data);
 	}
 	public function dataPrestasiSort()
 	{
@@ -466,7 +466,7 @@ class Main extends BaseController
 			$i++;
 		}
 		$data = ['santri' => $santri];
-		return view('data-Prestasi', $data);
+		return view('data-prestasi', $data);
 	}
 	public function masterLogin(): string
 	{
