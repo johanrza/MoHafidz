@@ -28,10 +28,43 @@ class Main extends BaseController
 	{
 		return view('index');
 	}
-	public function indexPencarian()
+
+
+	public function pencarianRekomendasi()
 	{
 		$kata_kunci = $this->request->getVar('kata_kunci');
+		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci))->get()->getResultArray();
+		// dd($pencarian);
+		if (count($pencarian) === 0) {
+			session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
+			return redirect()->back();
+		} else if (count($pencarian) > 1) {
+			// dd($pencarian);
+			return view('index', ['rekomendasi' => $pencarian]);
+		} else {
+			session()->set('pilihan',$pencarian[0]['nama']);
+			return redirect()->to('pencarianPilihan');
+		}
+	}
+	public function pencarianRedirect($id_santri)
+	{
+		$cariSantri = $this->santriModel->where(array('id_santri' => $id_santri))->get()->getRowArray();
+		session()->set('pilihan', $cariSantri['nama']);
+		return redirect()->to('pencarianPilihan');
+	}
+
+	public function indexPencarian()
+	{
+		if (session('pilihan') !== null) {
+			$kata_kunci = session('pilihan');
+			session()->remove('pilihan');
+		} else {
+			$kata_kunci = $this->request->getVar('kata_kunci');
+		}
 		$pencarian = $this->santriModel->where(array('nama' => $kata_kunci))->get()->getRowArray();
+		// dd($pencarian);
+		// $pencarian = $this->santriModel->like('nama', $kata_kunci)->get()->getRowtArray();
+
 		session()->remove('pencarian');
 		session()->remove('error');
 		if (isset($pencarian)) {
@@ -54,7 +87,6 @@ class Main extends BaseController
 				'juz_30' => $juz_30
 			];
 			return view('index', $data);
-			return redirect()->back();
 		} else {
 			session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
 			return redirect()->back();
@@ -226,7 +258,7 @@ class Main extends BaseController
 	{
 		$santri = $this->santriModel->findAll();
 		$i = 0;
-		foreach ($santri as $s) :
+		foreach ($santri as $s):
 			$pengajar = $this->pengajarModel->where(array('id_pengajar' => $s['input_oleh']))->get()->getRowArray();
 			$s['input_oleh'] = $pengajar['nama'];
 			$santri[$i] = $s;
@@ -320,7 +352,7 @@ class Main extends BaseController
 		$dataHafalan = $this->hafalanModel->where(array('id_santri' => $id_santri))->get()->getResultArray();
 		// dd($dataHafalan);
 		if ($dataHafalan !== 0) {
-			foreach ($dataHafalan as $h) :
+			foreach ($dataHafalan as $h):
 				$this->hafalanModel->delete($h);
 			endforeach;
 		}
@@ -385,7 +417,7 @@ class Main extends BaseController
 				->get()->getResultArray();
 			if (count($juz_30) < 1) {
 				$juz_30[0] = [
-					'surat' 	 => " ",
+					'surat' => " ",
 					'ayat_akhir' => " "
 				];
 			} else {
@@ -409,7 +441,7 @@ class Main extends BaseController
 	}
 	public function dataPrestasiSort()
 	{
-		$tglAwal  = $this->request->getVar('tgl-awal');
+		$tglAwal = $this->request->getVar('tgl-awal');
 		$tglAkhir = $this->request->getVar('tgl-akhir');
 		session()->set('tglAwalPDF', $tglAwal);
 		session()->set('tglAkhirPDF', $tglAkhir);
@@ -468,7 +500,7 @@ class Main extends BaseController
 				->get()->getResultArray();
 			if (count($juz_30) < 1) {
 				$juz_30[0] = [
-					'surat' 	 => " ",
+					'surat' => " ",
 					'ayat_akhir' => " "
 				];
 			} else {
@@ -721,7 +753,7 @@ class Main extends BaseController
 					->get()->getResultArray();
 				if (count($juz_30) < 1) {
 					$juz_30[0] = [
-						'surat' 	 => " ",
+						'surat' => " ",
 						'ayat_akhir' => " "
 					];
 				} else {
@@ -796,7 +828,7 @@ class Main extends BaseController
 					->get()->getResultArray();
 				if (count($juz_30) < 1) {
 					$juz_30[0] = [
-						'surat' 	 => " ",
+						'surat' => " ",
 						'ayat_akhir' => " "
 					];
 				} else {

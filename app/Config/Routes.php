@@ -54,6 +54,8 @@ $routes->get('/data-santri/deleteFotoSantri/(:num)', 'Main::deleteFotoSantri/$1'
 
 // POST DATA
 $routes->post('/pencarian', 'Main::indexPencarian');
+$routes->post('/pencarianRekomendasi', 'Main::pencarianRekomendasi');
+$routes->get('/pencarianRedirect/(:num)', 'Main::pencarianRedirect/$1');
 $routes->post('/login/pengajar', 'Main::loginPengajar');
 $routes->post('/login/master', 'Main::loginMaster');
 $routes->post('/masterDashboard/addPengajar', 'Main::addPengajar');
@@ -69,6 +71,9 @@ $routes->post('/settings/updatePengajar/(:num)', 'Main::settingsUpdatePengajar/$
 // PDF
 $routes->get('profile/(:num)/pdf/(:any)', 'Main::generatepdf/$1/$2');
 $routes->get('data-prestasi/pdf/', 'Main::generatepdfPrestasi/');
+
+//cuntom
+$routes->add('pencarianPilihan', 'Main::indexPencarian');
 
 
 

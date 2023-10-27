@@ -59,7 +59,8 @@
     <div class="container-ex container py-4">
       <div class="text-center mb-4">
         <a href="." class="navbar-brand navbar-brand-autodark">
-          <img src="./dist/img/logo-text-mohafidz.svg" alt="Mohafidz" class="navbar-brand-image" style="height: 5rem; width: auto" />
+          <img src="./dist/img/logo-text-mohafidz.svg" alt="Mohafidz" class="navbar-brand-image"
+            style="height: 5rem; width: auto" />
         </a>
       </div>
       <div class="card card-md">
@@ -74,16 +75,21 @@
           </div>
           <?php if (session('error') !== '') { ?>
             <div class="mb-3 text-center">
-              <label class="text-danger fs-5"><?php echo session('error') ?></label>
+              <label class="text-danger fs-5">
+                <?php echo session('error') ?>
+              </label>
             </div>
-          <?php session()->remove('error');
+            <?php session()->remove('error');
           } ?>
-          <form action="/pencarian" method="post" autocomplete="off" enctype="multipart/form-data">
+          <form action="/pencarianRekomendasi" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="input-group mb-3">
-              <input type="text" class="form-control input-group-flat" placeholder="Masukan Nama Lengkap Santri" aria-label="Masukan Nama Lengkap Santri" aria-describedby="button-addon2" name="kata_kunci" />
-              <button class="btn btn-primary" type="submit" id="button-addon2">
+              <input id="keyword" type="text" class="form-control input-group-flat"
+                placeholder="Masukan Nama Lengkap Santri" aria-label="Masukan Nama Lengkap Santri"
+                aria-describedby="search-button" name="kata_kunci" />
+              <button class="btn btn-primary" type="submit" id="search-button">
                 <!-- search icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
                   <path d="M21 21l-6 -6"></path>
@@ -91,39 +97,49 @@
               </button>
             </div>
           </form>
+
+          <?php
+          if (isset($rekomendasi)):
+            ?>
+            <div id="list-santri" class="d-block">
+              <p class="pt-3 text-success text-capitalize fw-bold">Pilih nama santri yang muncul untuk melihat hafalan:
+              </p>
+              <?php foreach ($rekomendasi as $r) :?>
+              <p><a class="link-offset-2 link-underline link-underline-opacity-100 fs-3" href="/pencarianRedirect/<?= $r['id_santri']?>" style="text-decoration: underline;"><?=$r['nama'] ?></a></p>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
         </div>
 
-        <!-- Ketika button diatas di klik, maka Menampilkan Data Santri Hasil Pencarian (kalo ketemu). Kode dibawah:-->
-        <!-- ubah class dari "d-none" menjadi "d-block" untuk menampilkan data santri ketika berhasil ditemukan. Jika tidak ada, bisa tampilkan alert bahwa tidak ketemu (mis: sweetalert) -->
         <?php
         if (session('pencarian') !== null) {
           $data = session('pencarian');
           session()->remove('pencarian');
-        ?>
+          ?>
           <div class="d-block">
           <?php } else {
           $data = [
-            'foto'          => '',
-            'nama'          => '',
-            'alamat'        => '',
-            'wali'          => '',
+            'foto' => '',
+            'nama' => '',
+            'alamat' => '',
+            'wali' => '',
             'tanggal_lahir' => '',
-            'kelas'         => ''
+            'kelas' => ''
           ];
           $santri = [
-            'nama' =>       '',
-            'id_santri' =>  ''
+            'nama' => '',
+            'id_santri' => ''
           ];
           $dataHafalan[0] = [
-            'id_hafalan'  => ' ',
-            'id_santri'   => ' ',
-            'jenis'       => ' ',
-            'tanggal'     => ' ',
-            'surat'       => ' ',
-            'ayat_awal'   => ' ',
-            'ayat_akhir'  => ' ',
+            'id_hafalan' => ' ',
+            'id_santri' => ' ',
+            'jenis' => ' ',
+            'tanggal' => ' ',
+            'surat' => ' ',
+            'ayat_awal' => ' ',
+            'ayat_akhir' => ' ',
             'keterangan_s' => ' ',
-            'murojaah'    => ' ',
+            'murojaah' => ' ',
             'keterangan_m' => ' ',
           ];
           $empat_surat = $dataHafalan;
@@ -139,9 +155,11 @@
                   <div class="row justify-content-center">
                     <div class="col-md-3 text-center">
                       <?php if ($data['foto'] !== '') { ?>
-                        <img src="<?php echo base_url('/img/' . $data['foto'])  ?>" class="img-thumbnail" alt="Blank Person" />
+                        <img src="<?php echo base_url('/img/' . $data['foto']) ?>" class="img-thumbnail"
+                          alt="Blank Person" />
                       <?php } else { ?>
-                        <img src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg" class="img-thumbnail" alt="Blank Person" />
+                        <img src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
+                          class="img-thumbnail" alt="Blank Person" />
                       <?php } ?>
                     </div>
                     <div class="col-md-4 mt-lg-3 mt-sm-5 mt-5">
@@ -191,9 +209,12 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">4 Surat</h4>
                       <div class="btn-list">
-                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
+                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
                           <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
@@ -201,9 +222,12 @@
                         </button>
 
                         <!-- button PDF 4 Surat -->
-                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat" target="_blank">
+                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat"
+                          target="_blank">
                           <!-- download icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                             <path d="M7 11l5 5l5 -5"></path>
@@ -233,8 +257,8 @@
                             <tbody>
                               <?php
                               $i = 1;
-                              foreach ($empat_surat as $surat) :
-                              ?>
+                              foreach ($empat_surat as $surat):
+                                ?>
                                 <tr>
                                   <td>
                                     <?= $i++; ?>
@@ -245,11 +269,11 @@
                                   <td>
                                     <?= $surat['surat'] ?>
                                   </td>
-                                  <?php if ($surat['ayat_awal'] === $surat['ayat_akhir']) : ?>
+                                  <?php if ($surat['ayat_awal'] === $surat['ayat_akhir']): ?>
                                     <td>
                                       <?= $surat['ayat_awal'] ?>
                                     </td>
-                                  <?php else : ?>
+                                  <?php else: ?>
                                     <td>
                                       <?= $surat['ayat_awal'] ?> -
                                       <?= $surat['ayat_akhir'] ?>
@@ -292,9 +316,12 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">30 Juz</h4>
                       <div class="btn-list">
-                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
+                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
                           <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
@@ -302,9 +329,12 @@
                         </button>
 
                         <!-- button PDF Juz 30 -->
-                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30" target="_blank">
+                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30"
+                          target="_blank">
                           <!-- download icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                             <path d="M7 11l5 5l5 -5"></path>
@@ -334,8 +364,8 @@
                             <tbody>
                               <?php
                               $j = 1;
-                              foreach ($juz_30 as $juz) :
-                              ?>
+                              foreach ($juz_30 as $juz):
+                                ?>
                                 <tr>
                                   <td>
                                     <?= $j++; ?>
@@ -346,11 +376,11 @@
                                   <td>
                                     <?= $juz['surat'] ?>
                                   </td>
-                                  <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']) : ?>
+                                  <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']): ?>
                                     <td>
                                       <?= $juz['ayat_awal'] ?>
                                     </td>
-                                  <?php else : ?>
+                                  <?php else: ?>
                                     <td>
                                       <?= $juz['ayat_awal'] ?> -
                                       <?= $juz['ayat_akhir'] ?>
@@ -390,32 +420,35 @@
               </div>
             </div>
             <!-- akhir tampil data santri -->
+          </div>
+        </div>
+
+        <footer class="footer footer-transparent text-center pt-md-5 py-3">
+          <div class="row align-items-center">
+            <div class="col-md-auto order-md-last ms-auto">
+              <a href="./login" class="btn btn-link link-secondary py-3">
+                <!-- login icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24"
+                  height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                  <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                </svg>
+                Login as Admin
+              </a>
+            </div>
+            <div class="col-md-auto me-auto mt-md-0 mt-5">
+              <a href="https://janabadra.ac.id/" target="_blank">
+                <img src="./dist/img/logo_ujb.png" alt="Universitas Janabadra" width="150" />
+              </a>
+            </div>
+            <div class="col-md-auto m-md-auto mt-5">
+              <p class="m-0">Copyright &copy; 2023 - PKM-PM <a class="text-secondary" href="https://janabadra.ac.id/"
+                  target="_blank">Universitas Janabadra</a></p>
             </div>
           </div>
-
-          <footer class="footer footer-transparent text-center pt-md-5 py-3">
-            <div class="row align-items-center">
-              <div class="col-md-auto order-md-last ms-auto">
-                <a href="./login" class="btn btn-link link-secondary py-3">
-                  <!-- login icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                    <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
-                  </svg>
-                  Login as Admin
-                </a>
-              </div>
-              <div class="col-md-auto me-auto mt-md-0 mt-5">
-                <a href="https://janabadra.ac.id/" target="_blank">
-                  <img src="./dist/img/logo_ujb.png" alt="Universitas Janabadra" width="150" />
-                </a>
-              </div>
-              <div class="col-md-auto m-md-auto mt-5">
-                <p class="m-0">Copyright &copy; 2023 - PKM-PM <a class="text-secondary" href="https://janabadra.ac.id/" target="_blank">Universitas Janabadra</a></p>
-              </div>
-            </div>
-          </footer>
+        </footer>
       </div>
     </div><!-- Libs JS -->
     <script src="./dist/libs/jquery/jquery-3.7.0.js"></script>
@@ -442,7 +475,7 @@
       }
     </script>
     <script>
-      $(document).ready(function() {
+      $(document).ready(function () {
         $('.table-responsive table').DataTable({
           ordering: false,
           searching: false,
@@ -458,7 +491,7 @@
     </script>
     <script>
       const tanggalElemen = document.querySelectorAll('[class="format-tanggal"]');
-      tanggalElemen.forEach(function(elemen) {
+      tanggalElemen.forEach(function (elemen) {
         const tanggal = elemen.textContent;
         const tanggalObj = new Date(tanggal);
         const formatTanggal = tanggalObj.toLocaleDateString('id-ID', {
@@ -525,7 +558,7 @@
             totalVerses = 83;
             break;
 
-            // Juz 30 disini
+          // Juz 30 disini
           case 'An-Naba':
             totalVerses = 40;
             break;
