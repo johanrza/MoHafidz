@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2023 at 02:11 AM
+-- Generation Time: Oct 27, 2023 at 05:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,17 +40,6 @@ CREATE TABLE `hafalan` (
   `keterangan_m` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `hafalan`
---
-
-INSERT INTO `hafalan` (`id_santri`, `id_hafalan`, `jenis`, `tanggal`, `surat`, `ayat_awal`, `ayat_akhir`, `keterangan_s`, `murojaah`, `keterangan_m`) VALUES
-(35, 17, '4 Surat', '2023-10-27', 'Ar-Rahman', 34, 78, 'sadas', 'asda', 'asdas'),
-(35, 18, '4 Surat', '2023-10-11', 'Al-Waaqi\'ah', 11, 96, 'adas', 'asda', 'asda'),
-(35, 19, '4 Surat', '2023-10-10', 'Al-Mulk', 27, 30, 'asdas', 'dasda', 'dasd'),
-(35, 20, 'Juz 30', '2023-10-15', 'An-Naba', 11, 22, 'asda', 'asda', 'asdasd'),
-(35, 21, 'Juz 30', '2023-10-24', 'An-Nazi\'at', 11, 22, 'asda', 'asda', 'sasdas');
-
 -- --------------------------------------------------------
 
 --
@@ -68,7 +57,7 @@ CREATE TABLE `master` (
 --
 
 INSERT INTO `master` (`username`, `password`, `pertanyaan`) VALUES
-('master', 'master', 'master');
+('master', 'MASTERKU!', 'master');
 
 -- --------------------------------------------------------
 
@@ -90,7 +79,7 @@ CREATE TABLE `pengajar` (
 --
 
 INSERT INTO `pengajar` (`id_pengajar`, `nama`, `username`, `password`, `gelar`, `foto`) VALUES
-(34, 'Makima', 'makima', '$2y$10$pvELB4tBSMSaOYq/cC1MDuKI4H6yiyAOCeciQuJ2FsydSvDO90DCC', 'Ustadzah', '1696058666_2a85b8906b5ab8e659dd.jpg');
+(34, 'admin', 'admin', '$2y$10$MAmpbvVoWCJGKFaYuauN0ujRjRumWfWkc1orCddIADD1lWhc7sRqe', 'Ustadz', '');
 
 -- --------------------------------------------------------
 
@@ -109,13 +98,6 @@ CREATE TABLE `santri` (
   `input_oleh` int(11) NOT NULL,
   `tgl_input` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `santri`
---
-
-INSERT INTO `santri` (`id_santri`, `nama`, `alamat`, `wali`, `tanggal_lahir`, `kelas`, `foto`, `input_oleh`, `tgl_input`) VALUES
-(35, 'test', 'alamat=', 'wali=', '2023-10-27', 'saiki=', '1697365936_7309246d7bc6e459eb7d.jpg', 34, '2023-10-15');
 
 --
 -- Indexes for dumped tables
@@ -153,7 +135,7 @@ ALTER TABLE `santri`
 -- AUTO_INCREMENT for table `hafalan`
 --
 ALTER TABLE `hafalan`
-  MODIFY `id_hafalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_hafalan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengajar`
@@ -165,7 +147,7 @@ ALTER TABLE `pengajar`
 -- AUTO_INCREMENT for table `santri`
 --
 ALTER TABLE `santri`
-  MODIFY `id_santri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_santri` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
