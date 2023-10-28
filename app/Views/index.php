@@ -209,18 +209,6 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">4 Surat</h4>
                       <div class="btn-list">
-                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                          </svg>
-                        </button>
-
                         <!-- button PDF 4 Surat -->
                         <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/4-surat"
                           target="_blank">
@@ -493,7 +481,7 @@
       const tanggalElemen = document.querySelectorAll('[class="format-tanggal"]');
       tanggalElemen.forEach(function (elemen) {
         const tanggal = elemen.textContent;
-        const tanggalObj = new Date(tanggal);
+        const tanggalObj = new Date(tanggal.replace(/-/g, "/"));
         const formatTanggal = tanggalObj.toLocaleDateString('id-ID', {
           day: 'numeric',
           month: 'long',

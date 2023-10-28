@@ -831,7 +831,7 @@
     const tanggalElemen = document.querySelectorAll('[class="format-tanggal"]');
     tanggalElemen.forEach(function(elemen) {
       const tanggal = elemen.textContent;
-      const tanggalObj = new Date(tanggal);
+      const tanggalObj = new Date(tanggal.replace(/-/g, "/"));
       const formatTanggal = tanggalObj.toLocaleDateString('id-ID', {
         day: 'numeric',
         month: 'long',

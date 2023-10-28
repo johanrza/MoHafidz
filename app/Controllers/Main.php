@@ -29,15 +29,14 @@ class Main extends BaseController
 		return view('index');
 	}
 
-
 	public function pencarianRekomendasi()
 	{
 		$kata_kunci = $this->request->getVar('kata_kunci');
-		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci))->get()->getResultArray();
+		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci), false, 'after')->get()->getResultArray();
 		// dd($pencarian);
 		if (count($pencarian) === 0) {
 			session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
-			return redirect()->back();
+			return redirect()->to('/');
 		} else if (count($pencarian) > 1) {
 			// dd($pencarian);
 			return view('index', ['rekomendasi' => $pencarian]);
