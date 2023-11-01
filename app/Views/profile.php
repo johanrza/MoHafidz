@@ -315,7 +315,7 @@
                   <div class="col-md-4 mt-lg-3 mt-sm-5">
                     <div class="mb-3">
                       <label class="form-label">Tanggal Lahir</label>
-                      <input type="date" class="form-control" value="<?php echo date("d-m-Y", strtotime($data['tanggal_lahir'])); ?>" readonly />
+                      <input type="text" class="form-control" value="<?php echo date("d-m-Y", strtotime($santri['tanggal_lahir'])); ?>" readonly />
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Kelas</label>

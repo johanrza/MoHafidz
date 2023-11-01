@@ -32,18 +32,12 @@ class Main extends BaseController
 	public function pencarianRekomendasi()
 	{
 		$kata_kunci = $this->request->getVar('kata_kunci');
-		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci), false, 'after')->get()->getResultArray();
-		// dd($pencarian);
-		if (count($pencarian) === 0) {
-			session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
-			return redirect()->to('/');
-		} else if (count($pencarian) > 1) {
-			// dd($pencarian);
+		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci))->get()->getResultArray();
+		if (count($pencarian) >= 1) {
 			return view('index', ['rekomendasi' => $pencarian]);
-		} else {
-			session()->set('pilihan',$pencarian[0]['nama']);
-			return redirect()->to('pencarianPilihan');
 		}
+		session()->set('error', 'Santri yang anda cari tidak ditemukan, tuliskan nama lengkap santri untuk mencari data santri');
+		return redirect()->to('/');
 	}
 	public function pencarianRedirect($id_santri)
 	{
