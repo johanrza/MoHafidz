@@ -38,7 +38,7 @@
       <th width="100px">Al Waaqi'ah</th>
       <th width="100px">Al Mulk</th>
       <th width="100px">Yaasin</th>
-      <th width="100px">Juz 30</th>
+      <th width="120px">Juz 30</th>
 
       <!-- ? -->
       <th width="100px">Juz 29</th>
