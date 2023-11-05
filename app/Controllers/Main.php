@@ -654,7 +654,7 @@ class Main extends BaseController
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
 		// nama file ketika di save: [namaSantri].pdf
-		$mpdf->Output('Beka Hani Suseno.pdf', 'I');
+		$mpdf->Output($data_santri['nama'].'.pdf', 'I');
 	}
 	public function generatepdfPrestasi()
 	{
