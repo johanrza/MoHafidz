@@ -28,6 +28,10 @@ class Main extends BaseController
 	{
 		return view('index');
 	}
+	public function wp()
+	{
+		return view('wp');
+	}
 
 	public function pencarianRekomendasi()
 	{
