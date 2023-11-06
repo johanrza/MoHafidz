@@ -104,8 +104,11 @@
             <div id="list-santri" class="d-block">
               <p class="pt-3 text-success text-capitalize fw-bold">Pilih nama santri yang muncul untuk melihat hafalan:
               </p>
-              <?php foreach ($rekomendasi as $r) :?>
-              <p><a class="link-offset-2 link-underline link-underline-opacity-100 fs-3" href="/pencarianRedirect/<?= $r['id_santri']?>" style="text-decoration: underline;"><?=$r['nama'] ?></a></p>
+              <?php foreach ($rekomendasi as $r): ?>
+                <p><a class="link-offset-2 link-underline link-underline-opacity-100 fs-3"
+                    href="/pencarianRedirect/<?= $r['id_santri'] ?>" style="text-decoration: underline;">
+                    <?= $r['nama'] ?>
+                  </a></p>
               <?php endforeach; ?>
             </div>
           <?php endif; ?>
@@ -179,7 +182,8 @@
                     <div class="col-md-4 mt-lg-3 mt-sm-5">
                       <div class="mb-3">
                         <label class="form-label">Tanggal Lahir</label>
-                        <input type="text" class="form-control" value="<?php echo date("d-m-Y", strtotime($data['tanggal_lahir'])); ?>" readonly />
+                        <input type="text" class="form-control"
+                          value="<?php echo date("d-m-Y", strtotime($data['tanggal_lahir'])); ?>" readonly />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Kelas</label>
@@ -304,18 +308,6 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="m-0">30 Juz</h4>
                       <div class="btn-list">
-                        <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                          </svg>
-                        </button>
-
                         <!-- button PDF Juz 30 -->
                         <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30"
                           target="_blank">
@@ -468,12 +460,18 @@
           ordering: false,
           searching: false,
           autoWidth: false,
-          responsive: true,
+          responsive: false,
           order: [
             [1, 'asc']
           ],
           pageLength: 15,
           lengthMenu: [15, 20, 25, 50],
+        });
+
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+          $('.table-responsive table:visible').each(function (e) {
+            $(this).DataTable().columns.adjust().responsive.recalc();
+          });
         });
       });
     </script>
@@ -488,296 +486,6 @@
           year: 'numeric'
         });
         elemen.textContent = formatTanggal;
-      });
-    </script>
-
-    <!-- script untuk tambah hafalan santri -->
-    <script>
-      const fourSuratTab = document.querySelector("a[href='#tabs-4-surat']");
-      const juz30Tab = document.querySelector("a[href='#tabs-juz-30']");
-      const subModalTitle = document.querySelector('#sub-modal-title-hafalan');
-
-      const nameSurat = document.querySelector('#surat-hafalan');
-      const ayatStart = document.querySelector('#ayat-start-hafalan');
-      const ayatEnd = document.querySelector('#ayat-end-hafalan');
-      let totalVerses;
-
-      nameSurat.addEventListener('change', () => {
-        listJumlahAyatDanAyatAwal();
-      });
-
-      ayatStart.addEventListener('change', () => {
-        tampilAyatAkhir();
-      });
-
-      fourSuratTab.addEventListener('click', () => {
-        setSuratOption('4 Surat', ['Ar-Rahman', "Al-Waaqi'ah", 'Al-Mulk', 'Yaasin']);
-      });
-
-      juz30Tab.addEventListener('click', () => {
-        setSuratOption('Juz 30', ['An-Naba', 'An-Nazi\'at', 'Abasa', 'At-Takwir', 'Al-Infitar', 'Al-Mutaffifin', 'Al-Inshiqaq', 'Al-Buruj', 'At-Tariq', 'Al-A`la', 'Al-Ghashiyah', 'Al-Fajr', 'Al-Balad', 'Ash-Shams', 'Al-Lail', 'Adh-Dhuha', 'Ash-Sharh', 'At-Tin', 'Al-Alaq', 'Al-Qadr', 'Al-Bayyina', 'Az-Zalzalah', 'Al-Adiyat', 'Al-Qari`ah', 'At-Takathur', 'Al-Asr', 'Al-Humazah', 'Al-Fil', 'Quraish', 'Al-Ma`un', 'Al-Kawthar', 'Al-Kafirun', 'An-Nasr', 'Al-Masad', 'Al-Ikhlas', 'Al-Falaq', 'An-Nas']); // masukan nama surat juz 30 didalam array
-      });
-
-      const setSuratOption = (title, arrSurat) => {
-        if (typeof title === 'string' && Array.isArray(arrSurat)) {
-          defaultValueAyat();
-
-          subModalTitle.innerHTML = title;
-          nameSurat.innerHTML = '<option selected disabled hidden>Pilih Surat</option>';
-          arrSurat.forEach((surat) => {
-            nameSurat.innerHTML += `<option value="${surat}">${surat}</option>`;
-          });
-        }
-      };
-
-      const listJumlahAyatDanAyatAwal = () => {
-        switch (nameSurat.value) {
-          // 4 Surat disini
-          case 'Ar-Rahman':
-            totalVerses = 78;
-            break;
-          case "Al-Waaqi'ah":
-            totalVerses = 96;
-            break;
-          case 'Al-Mulk':
-            totalVerses = 30;
-            break;
-          case 'Yaasin':
-            totalVerses = 83;
-            break;
-
-          // Juz 30 disini
-          case 'An-Naba':
-            totalVerses = 40;
-            break;
-          case 'An-Nazi\'at':
-            totalVerses = 46;
-            break;
-          case 'Abasa':
-            totalVerses = 42;
-            break;
-          case 'At-Takwir':
-            totalVerses = 29;
-            break;
-          case 'Al-Infitar':
-            totalVerses = 19;
-            break;
-          case 'Al-Mutaffifin':
-            totalVerses = 36;
-            break;
-          case 'Al-Inshiqaq':
-            totalVerses = 25;
-            break;
-          case 'Al-Buruj':
-            totalVerses = 22;
-            break;
-          case 'At-Tariq':
-            totalVerses = 17;
-            break;
-          case 'Al-A`la':
-            totalVerses = 19;
-            break;
-          case 'Al-Ghashiyah':
-            totalVerses = 26;
-            break;
-          case 'Al-Fajr':
-            totalVerses = 30;
-            break;
-          case 'Al-Balad':
-            totalVerses = 20;
-            break;
-          case 'Ash-Shams':
-            totalVerses = 15;
-            break;
-          case 'Al-Lail':
-            totalVerses = 21;
-            break;
-          case 'Adh-Dhuha':
-            totalVerses = 11;
-            break;
-          case 'Ash-Sharh':
-            totalVerses = 8;
-            break;
-          case 'At-Tin':
-            totalVerses = 8;
-            break;
-          case 'Al-Alaq':
-            totalVerses = 19;
-            break;
-          case 'Al-Qadr':
-            totalVerses = 5;
-            break;
-          case 'Al-Bayyina':
-            totalVerses = 8;
-            break;
-          case 'Az-Zalzalah':
-            totalVerses = 8;
-            break;
-          case 'Al-Adiyat':
-            totalVerses = 11;
-            break;
-          case 'Al-Qari`ah':
-            totalVerses = 11;
-            break;
-          case 'At-Takathur':
-            totalVerses = 8;
-            break;
-          case 'Al-Asr':
-            totalVerses = 3;
-            break;
-          case 'Al-Humazah':
-            totalVerses = 9;
-            break;
-          case 'Al-Fil':
-            totalVerses = 5;
-            break;
-          case 'Quraish':
-            totalVerses = 4;
-            break;
-          case 'Al-Ma`un':
-            totalVerses = 7;
-            break;
-          case 'Al-Kawthar':
-            totalVerses = 3;
-            break;
-          case 'Al-Kafirun':
-            totalVerses = 6;
-            break;
-          case 'An-Nasr':
-            totalVerses = 3;
-            break;
-          case 'Al-Masad':
-            totalVerses = 5;
-            break;
-          case 'Al-Ikhlas':
-            totalVerses = 4;
-            break;
-          case 'Al-Falaq':
-            totalVerses = 5;
-            break;
-          case 'An-Nas':
-            totalVerses = 6;
-            break;
-
-          default:
-            totalVerses = 0;
-            break;
-        };
-
-        ayatStart.innerHTML = '<option value="0" selected disabled>Pilih ayat awal...</option>';
-        ayatEnd.innerHTML = '<option value="0" selected disabled>Pilih ayat awal dahulu...</option>';
-
-        for (let i = 1; i <= totalVerses; i++) {
-          const optionStart = document.createElement('option');
-          optionStart.value = optionStart.textContent = i;
-          ayatStart.appendChild(optionStart);
-        }
-      };
-
-      const tampilAyatAkhir = () => {
-        ayatEnd.innerHTML = '<option value="0" selected disabled>Pilih ayat akhir...</option>';
-
-        for (let i = parseInt(ayatStart.value) || 1; i <= parseInt(ayatStart.lastChild.value); i++) {
-          const optionEnd = document.createElement('option');
-          optionEnd.value = optionEnd.textContent = i;
-          ayatEnd.appendChild(optionEnd);
-        }
-      };
-
-      const defaultValueAyat = () => {
-        ayatStart.innerHTML = '<option value="0" selected disabled>Pilih surat terlebih dahulu</option>';
-        ayatEnd.innerHTML = '<option value="0" selected disabled>Pilih surat terlebih dahulu</option>';
-      };
-    </script>
-
-    <!-- script edit hafalan -->
-    <script>
-      const table4Surat = document.getElementById('table4Surat');
-      const tableJuz30 = document.getElementById('tableJuz30');
-      const modalTitle = document.querySelector('#modal-title-hafalan');
-      const formHafalan = document.querySelector('#form-hafalan');
-      const btnSubmitHafalan = document.querySelector('#submit-hafalan');
-      const jenisHafalan = document.querySelector('#jenis-hafalan');
-
-      document.querySelector('#tambah-4surat').addEventListener('click', () => {
-        jenisHafalan.value = '4 Surat';
-      });
-
-      document.querySelector('#tambah-juz30').addEventListener('click', () => {
-        jenisHafalan.value = 'Juz 30';
-      });
-
-      const handleEditClick = (event) => {
-        const target = event.target;
-        const isEditButton = target.closest('[data-edit-hafalan="true"]');
-
-        if (isEditButton) {
-          btnSubmitHafalan.innerHTML = 'Ubah Hafalan';
-
-          // action edit data hafalan
-          formHafalan.action = '/profile/updateHafalan/' + isEditButton.dataset.editIdHafalan;
-
-          modalTitle.innerHTML = 'Ubah Data Hafalan';
-
-          // jika 'id' tidak ingin menggunakan 'angka' maka hapus 'Number'
-          formHafalan.insertAdjacentHTML('afterbegin', `<input type="number" class="form-control" id="id-hafalan" name="id-hafalan" value="${Number(isEditButton.dataset.editIdHafalan)}" hidden />`);
-
-          formHafalan.insertAdjacentHTML('afterbegin', `<input type="text" class="form-control" id="user-id-hafalan" name="user-id-hafalan" value="${isEditButton.dataset.editUserId}" hidden />`);
-
-          document.querySelector('#tanggal-hafalan').value = isEditButton.dataset.editTanggal;
-
-          jenisHafalan.value = isEditButton.dataset.editJenis;
-
-          document.querySelectorAll('#surat-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.editSurat) {
-              item.selected = 'true';
-              listJumlahAyatDanAyatAwal();
-            }
-          });
-
-          document.querySelectorAll('#ayat-start-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.editAyatAwal) {
-              item.selected = 'true';
-              tampilAyatAkhir();
-            }
-          });
-
-          document.querySelectorAll('#ayat-end-hafalan option').forEach((item) => {
-            if (item.value === isEditButton.dataset.editAyatAkhir) {
-              item.selected = 'true';
-            }
-          });
-
-          document.querySelector('#ket-s').value = isEditButton.dataset.editKetS;
-          document.querySelector('#murojaah').value = isEditButton.dataset.editMurojaah;
-          document.querySelector('#ket-m').value = isEditButton.dataset.editKetM;
-        }
-      };
-
-      table4Surat.addEventListener('click', handleEditClick);
-      tableJuz30.addEventListener('click', handleEditClick);
-
-      formHafalan.addEventListener('submit', (event) => {
-        document.querySelector('input[name="jenis-hafalan"]').disabled = false;
-        // event.preventDefault();
-      });
-
-      document.querySelector('#modal-hafalan-santri').addEventListener('hidden.bs.modal', () => {
-        modalTitle.innerHTML = 'Tambah Data Hafalan';
-        const idHafalan = document.querySelector('#id-hafalan');
-        const idUserHafalan = document.querySelector('#user-id-hafalan');
-
-        if (idHafalan && idUserHafalan) {
-          idHafalan.remove();
-          idUserHafalan.remove();
-        }
-
-        btnSubmitHafalan.innerHTML = 'Tambah Hafalan';
-        formHafalan.reset();
-        // action tambah data hafalan
-        formHafalan.action = '/profile/addHafalan/<?= $santri['id_santri'] ?>';
-
-        defaultValueAyat();
       });
     </script>
 </body>

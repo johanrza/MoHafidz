@@ -545,363 +545,358 @@
 
                 <!-- juz 30 -->
                 <div class="tab-pane fade" id="tabs-juz-30">
-                  <div class="tab-pane fade active show" id="tabs-4-surat">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="m-0">30 Juz</h4>
-                      <div class="btn-list">
-                        <button class="tambah-juz30 btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
-                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
-                          <!-- plus icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                          </svg>
-                          Tambah Data Hafalan
-                        </button>
-                        <button class="tambah-juz30 btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                          data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                          </svg>
-                        </button>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="m-0">30 Juz</h4>
+                    <div class="btn-list">
+                      <button class="tambah-juz30 btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
+                        data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data Hafalan">
+                        <!-- plus icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M12 5l0 14" />
+                          <path d="M5 12l14 0" />
+                        </svg>
+                        Tambah Data Hafalan
+                      </button>
+                      <button class="tambah-juz30 btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
+                        data-bs-target="#modal-hafalan-santri" aria-label="Tambah Data">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M12 5l0 14" />
+                          <path d="M5 12l14 0" />
+                        </svg>
+                      </button>
 
-                        <!-- button PDF Juz 30 -->
-                        <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30"
-                          target="_blank">
-                          <!-- download icon -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
-                            <path d="M7 11l5 5l5 -5"></path>
-                            <path d="M12 4l0 12"></path>
-                          </svg>
-                          PDF
-                        </a>
-                      </div>
+                      <!-- button PDF Juz 30 -->
+                      <a class="btn btn-secondary" href="profile/<?= $santri['id_santri'] ?>/pdf/juz-30"
+                        target="_blank">
+                        <!-- download icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24"
+                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                          <path d="M7 11l5 5l5 -5"></path>
+                          <path d="M12 4l0 12"></path>
+                        </svg>
+                        PDF
+                      </a>
                     </div>
+                  </div>
 
-                    <!-- datatables -->
-                    <div class="card">
-                      <div class="card-body">
-                        <div id="tableJuz30" class="table-responsive">
-                          <table class="table table-vcenter table-nowrap">
-                            <thead>
+                  <!-- datatables -->
+                  <div class="card">
+                    <div class="card-body">
+                      <div id="tableJuz30" class="table-responsive">
+                        <table class="table table-vcenter table-nowrap">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Tanggal</th>
+                              <th>Surat</th>
+                              <th>Ayat</th>
+                              <th>Ket (S)</th>
+                              <th>Muroja'ah</th>
+                              <th>Ket (M)</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                            $j = 1;
+                            foreach ($juz_30 as $juz):
+                              ?>
                               <tr>
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Surat</th>
-                                <th>Ayat</th>
-                                <th>Ket (S)</th>
-                                <th>Muroja'ah</th>
-                                <th>Ket (M)</th>
-                                <th>Aksi</th>
+                                <td>
+                                  <?= $j++; ?>
+                                </td>
+                                <td class="format-tanggal">
+                                  <?= $juz['tanggal'] ?>
+                                </td>
+                                <td>
+                                  <?= $juz['surat'] ?>
+                                </td>
+                                <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']): ?>
+                                  <td>
+                                    <?= $juz['ayat_awal'] ?>
+                                  </td>
+                                <?php else: ?>
+                                  <td>
+                                    <?= $juz['ayat_awal'] ?> -
+                                    <?= $juz['ayat_akhir'] ?>
+                                  </td>
+                                <?php endif; ?>
+                                <td>
+                                  <?= $juz['keterangan_s'] ?>
+                                </td>
+                                <td>
+                                  <?= $juz['murojaah'] ?>
+                                </td>
+                                <td>
+                                  <?= $juz['keterangan_m'] ?>
+                                </td>
+                                <td>
+                                  <!-- responsive button -->
+                                  <div class="btn-list">
+                                    <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan"
+                                      data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri"
+                                      data-edit-hafalan="true" data-edit-user-id="XTY21312"
+                                      data-edit-id-hafalan="<?= $juz['id_hafalan'] ?>"
+                                      data-edit-tanggal="<?= $juz['tanggal'] ?>" data-edit-jenis="Juz 30"
+                                      data-edit-surat="<?= $juz['surat'] ?>"
+                                      data-edit-ayat-awal="<?= $juz['ayat_awal'] ?>"
+                                      data-edit-ayat-akhir="<?= $juz['ayat_akhir'] ?>"
+                                      data-edit-ket-s="<?= $juz['keterangan_s'] ?>"
+                                      data-edit-murojaah="<?= $juz['murojaah'] ?>"
+                                      data-edit-ket-m="<?= $juz['keterangan_m'] ?>">
+                                      <!-- edit svg -->
+                                      <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                        </path>
+                                        <path d="M16 5l3 3"></path>
+                                      </svg>
+                                    </button>
+                                    <button class="btn btn-danger btn-icon"
+                                      onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')"
+                                      aria-label="Hapus Profile">
+                                      <!-- trash svg -->
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4 7l16 0"></path>
+                                        <path d="M10 11l0 6"></path>
+                                        <path d="M14 11l0 6"></path>
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                      </svg>
+                                      </a>
+                                  </div>
+                                  <!-- end responsive button -->
+                                </td>
                               </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              $j = 1;
-                              foreach ($juz_30 as $juz):
-                                ?>
-                                <tr>
-                                  <td>
-                                    <?= $j++; ?>
-                                  </td>
-                                  <td class="format-tanggal">
-                                    <?= $juz['tanggal'] ?>
-                                  </td>
-                                  <td>
-                                    <?= $juz['surat'] ?>
-                                  </td>
-                                  <?php if ($juz['ayat_awal'] === $juz['ayat_akhir']): ?>
-                                    <td>
-                                      <?= $juz['ayat_awal'] ?>
-                                    </td>
-                                  <?php else: ?>
-                                    <td>
-                                      <?= $juz['ayat_awal'] ?> -
-                                      <?= $juz['ayat_akhir'] ?>
-                                    </td>
-                                  <?php endif; ?>
-                                  <td>
-                                    <?= $juz['keterangan_s'] ?>
-                                  </td>
-                                  <td>
-                                    <?= $juz['murojaah'] ?>
-                                  </td>
-                                  <td>
-                                    <?= $juz['keterangan_m'] ?>
-                                  </td>
-                                  <td>
-                                    <!-- responsive button -->
-                                    <div class="btn-list">
-                                      <button class="btn btn-primary btn-icon" aria-label="Ubah Hafalan"
-                                        data-bs-toggle="modal" data-bs-target="#modal-hafalan-santri"
-                                        data-edit-hafalan="true" data-edit-user-id="XTY21312"
-                                        data-edit-id-hafalan="<?= $juz['id_hafalan'] ?>"
-                                        data-edit-tanggal="<?= $juz['tanggal'] ?>" data-edit-jenis="Juz 30"
-                                        data-edit-surat="<?= $juz['surat'] ?>"
-                                        data-edit-ayat-awal="<?= $juz['ayat_awal'] ?>"
-                                        data-edit-ayat-akhir="<?= $juz['ayat_akhir'] ?>"
-                                        data-edit-ket-s="<?= $juz['keterangan_s'] ?>"
-                                        data-edit-murojaah="<?= $juz['murojaah'] ?>"
-                                        data-edit-ket-m="<?= $juz['keterangan_m'] ?>">
-                                        <!-- edit svg -->
-                                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit"
-                                          width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                          stroke="currentColor" fill="none" stroke-linecap="round"
-                                          stroke-linejoin="round">
-                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                          <path
-                                            d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                          </path>
-                                          <path d="M16 5l3 3"></path>
-                                        </svg>
-                                      </button>
-                                      <button class="btn btn-danger btn-icon"
-                                        onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $santri['nama']; ?>')"
-                                        aria-label="Hapus Profile">
-                                        <!-- trash svg -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash"
-                                          width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                          stroke="currentColor" fill="none" stroke-linecap="round"
-                                          stroke-linejoin="round">
-                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                          <path d="M4 7l16 0"></path>
-                                          <path d="M10 11l0 6"></path>
-                                          <path d="M14 11l0 6"></path>
-                                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                        </svg>
-                                        </a>
-                                    </div>
-                                    <!-- end responsive button -->
-                                  </td>
-                                </tr>
-                              <?php endforeach; ?>
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Surat</th>
-                                <th>Ayat</th>
-                                <th>Ket (S)</th>
-                                <th>Muroja'ah</th>
-                                <th>Ket (M)</th>
-                                <th>Aksi</th>
-                              </tr>
-                            </tfoot>
-                          </table>
-                        </div>
+                            <?php endforeach; ?>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>No</th>
+                              <th>Tanggal</th>
+                              <th>Surat</th>
+                              <th>Ayat</th>
+                              <th>Ket (S)</th>
+                              <th>Muroja'ah</th>
+                              <th>Ket (M)</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </tfoot>
+                        </table>
                       </div>
                     </div>
-                    <!-- akhir datatables -->
                   </div>
-                  <!-- akhir juz 30 -->
+                  <!-- akhir datatables -->
                 </div>
+                <!-- akhir juz 30 -->
               </div>
             </div>
           </div>
         </div>
-
-        <!-- modal edit profile santri -->
-        <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false"
-          tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Ubah Data Santri</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form action="/profile/updateProfile/<?= $santri['id_santri']; ?>" method="post" autocomplete="off"
-                enctype="multipart/form-data">
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <div class="row align-items-center">
-                      <label for="ubah-formFile" class="form-label">Foto Santri</label>
-                      <div class="col-auto">
-                        <?php if ($santri['foto'] !== '') { ?>
-                          <span>
-                            <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>"
-                              src="<?php echo base_url('/img/' . $santri['foto']) ?>" style="object-fit: contain;">
-                          </span>
-                        <?php } else { ?>
-                          <span>
-                            <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>"
-                              src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
-                              style="object-fit: contain;">
-                          </span>
-                        <?php } ?>
-                      </div>
-                      <div class="col-auto">
-                        <label for="fileInput-<?= $santri['id_santri']; ?>" class="btn"> Ganti Foto
-                          <input type="file" id="fileInput-<?= $santri['id_santri']; ?>" class="d-none"
-                            name="ubah-formFile" accept="image/*"
-                            onchange="document.getElementById('gantiFoto-<?= $santri['id_santri']; ?>').src = window.URL.createObjectURL(this.files[0])" />
-                          <input type="hidden" name="ubah-formFoto" value="<?= $santri['foto']; ?>" />
-                        </label>
-                      </div>
-                      <div class="col-auto mt-2">
-                        <a href="/data-santri/deleteFotoSantri/<?= $santri['id_santri']; ?>"
-                          onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');"
-                          class="btn btn-outline-danger">
-                          Hapus Foto
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap"
-                      value="<?= $santri['nama']; ?>" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat"
-                      value="<?= $santri['alamat']; ?>" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-nama-wali" class="form-label">Nama Wali Santri</label>
-                    <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali"
-                      value="<?= $santri['wali']; ?>" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-ttl" class="form-label">Tanggal Lahir</label>
-                    <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl"
-                      value="<?= $santri['tanggal_lahir']; ?>" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ubah-kelas" class="form-label">Kelas</label>
-                    <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas"
-                      value="<?= $santri['kelas']; ?>" required />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button class="btn btn-primary ms-auto" type="submit" name="submit-ubah">
-                    <!-- ubah svg -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24"
-                      height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                      <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                      <path d="M16 5l3 3"></path>
-                    </svg>
-                    Ubah profile santri
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- akhir modal edit  profile-->
-
-        <!-- modal tambah/edit hafalan santri -->
-        <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false"
-          tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 id="modal-title-hafalan" class="modal-title">Tambah Data Hafalan</h5>
-                <small id="sub-modal-title-hafalan">4 Surat</small>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form id="form-hafalan" action="/profile/addHafalan/<?= $santri['id_santri'] ?>" method="post"
-                autocomplete="off" enctype="multipart/form-data">
-                <div class="modal-body">
-                  <div class="mb-3">
-                    <label for="tanggal-hafalan" class="form-label">Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal-hafalan" name="tanggal-hafalan" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="jenis-hafalan" class="form-label">Jenis Hafalan</label>
-                    <input type="text" class="form-control" id="jenis-hafalan" name="jenis-hafalan" value="4 Surat"
-                      required disabled />
-                  </div>
-                  <div class="mb-3">
-                    <label for="surat-hafalan" class="form-label">Surat</label>
-                    <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" name="surat-hafalan"
-                      required>
-                      <option selected disabled hidden>Pilih Surat</option>
-                      <option value="Ar-Rahman">Ar-Rahman</option>
-                      <option value="Al-Waaqi'ah">Al-Waaqi'ah</option>
-                      <option value="Al-Mulk">Al-Mulk</option>
-                      <option value="Yaasin">Yaasin</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col">
-                        <label for="ayat-start-hafalan" class="form-label">Ayat Awal</label>
-                        <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal"
-                          name="ayat-start-hafalan" required>
-                          <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
-                        </select>
-                      </div>
-                      <div class="col-1 my-auto pt-4">
-                        <span aria-label="sampai">—</span>
-                      </div>
-                      <div class="col">
-                        <label for="ayat-start-hafalan" class="form-label">Ayat Akhir</label>
-                        <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir"
-                          name="ayat-end-hafalan" required>
-                          <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="ket-s" class="form-label">Keterangan (S)</label>
-                    <input type="text" class="form-control" id="ket-s" name="ket-s" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="murojaah" class="form-label">Muroja'ah</label>
-                    <input type="text" class="form-control" id="murojaah" name="murojaah" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="ket-m" class="form-label">Keterangan (M)</label>
-                    <input type="text" class="form-control" id="ket-m" name="ket-m" required />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button id="submit-hafalan" class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">Tambah
-                    Hafalan</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- akhir modal/edit tambah hafalan -->
-
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container-xl">
-            <div class="row text-center align-items-center">
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    Copyright &copy; 2023 - PKM-PM
-                    <a class="text-secondary" href="https://janabadra.ac.id/" target="_blank">Universitas Janabadra</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
+
+      <!-- modal edit profile santri -->
+      <div class="modal modal-blur fade" id="modal-edit-santri" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Ubah Data Santri</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/profile/updateProfile/<?= $santri['id_santri']; ?>" method="post" autocomplete="off"
+              enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <div class="row align-items-center">
+                    <label for="ubah-formFile" class="form-label">Foto Santri</label>
+                    <div class="col-auto">
+                      <?php if ($santri['foto'] !== '') { ?>
+                        <span>
+                          <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>"
+                            src="<?php echo base_url('/img/' . $santri['foto']) ?>" style="object-fit: contain;">
+                        </span>
+                      <?php } else { ?>
+                        <span>
+                          <img class="avatar avatar-xl" id="gantiFoto-<?= $santri['id_santri']; ?>"
+                            src="https://www.aquaknect.com.au/wp-content/uploads/2014/03/blank-person.jpg"
+                            style="object-fit: contain;">
+                        </span>
+                      <?php } ?>
+                    </div>
+                    <div class="col-auto">
+                      <label for="fileInput-<?= $santri['id_santri']; ?>" class="btn"> Ganti Foto
+                        <input type="file" id="fileInput-<?= $santri['id_santri']; ?>" class="d-none"
+                          name="ubah-formFile" accept="image/*"
+                          onchange="document.getElementById('gantiFoto-<?= $santri['id_santri']; ?>').src = window.URL.createObjectURL(this.files[0])" />
+                        <input type="hidden" name="ubah-formFoto" value="<?= $santri['foto']; ?>" />
+                      </label>
+                    </div>
+                    <div class="col-auto mt-2">
+                      <a href="/data-santri/deleteFotoSantri/<?= $santri['id_santri']; ?>"
+                        onclick="return confirm('Apakah anda yakin akan menghapus Foto Santri ?');"
+                        class="btn btn-outline-danger">
+                        Hapus Foto
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="ubah-nama-lengkap" class="form-label">Nama Lengkap Santri</label>
+                  <input type="text" class="form-control" id="ubah-nama-lengkap" name="ubah-nama-lengkap"
+                    value="<?= $santri['nama']; ?>" required />
+                </div>
+                <div class="mb-3">
+                  <label for="ubah-alamat" class="form-label">Alamat</label>
+                  <input type="text" class="form-control" id="ubah-alamat" name="ubah-alamat"
+                    value="<?= $santri['alamat']; ?>" required />
+                </div>
+                <div class="mb-3">
+                  <label for="ubah-nama-wali" class="form-label">Nama Wali Santri</label>
+                  <input type="text" class="form-control" id="ubah-nama-wali" name="ubah-nama-wali"
+                    value="<?= $santri['wali']; ?>" required />
+                </div>
+                <div class="mb-3">
+                  <label for="ubah-ttl" class="form-label">Tanggal Lahir</label>
+                  <input type="date" class="form-control" id="ubah-ttl" name="ubah-ttl"
+                    value="<?= $santri['tanggal_lahir']; ?>" required />
+                </div>
+                <div class="mb-3">
+                  <label for="ubah-kelas" class="form-label">Kelas</label>
+                  <input type="text" class="form-control" id="ubah-kelas" name="ubah-kelas"
+                    value="<?= $santri['kelas']; ?>" required />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary ms-auto" type="submit" name="submit-ubah">
+                  <!-- ubah svg -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                    <path d="M16 5l3 3"></path>
+                  </svg>
+                  Ubah profile santri
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- akhir modal edit  profile-->
+
+      <!-- modal tambah/edit hafalan santri -->
+      <div class="modal modal-blur fade" id="modal-hafalan-santri" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="modal-title-hafalan" class="modal-title">Tambah Data Hafalan</h5>
+              <small id="sub-modal-title-hafalan">4 Surat</small>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form-hafalan" action="/profile/addHafalan/<?= $santri['id_santri'] ?>" method="post"
+              autocomplete="off" enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="tanggal-hafalan" class="form-label">Tanggal</label>
+                  <input type="date" class="form-control" id="tanggal-hafalan" name="tanggal-hafalan" required />
+                </div>
+                <div class="mb-3">
+                  <label for="jenis-hafalan" class="form-label">Jenis Hafalan</label>
+                  <input type="text" class="form-control" id="jenis-hafalan" name="jenis-hafalan" value="4 Surat"
+                    required disabled />
+                </div>
+                <div class="mb-3">
+                  <label for="surat-hafalan" class="form-label">Surat</label>
+                  <select id="surat-hafalan" class="form-select" aria-label="Pilih surat" name="surat-hafalan" required>
+                    <option selected disabled hidden>Pilih Surat</option>
+                    <option value="Ar-Rahman">Ar-Rahman</option>
+                    <option value="Al-Waaqi'ah">Al-Waaqi'ah</option>
+                    <option value="Al-Mulk">Al-Mulk</option>
+                    <option value="Yaasin">Yaasin</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+                      <label for="ayat-start-hafalan" class="form-label">Ayat Awal</label>
+                      <select id="ayat-start-hafalan" class="form-select" aria-label="Pilih ayat awal"
+                        name="ayat-start-hafalan" required>
+                        <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
+                      </select>
+                    </div>
+                    <div class="col-1 my-auto pt-4">
+                      <span aria-label="sampai">—</span>
+                    </div>
+                    <div class="col">
+                      <label for="ayat-start-hafalan" class="form-label">Ayat Akhir</label>
+                      <select id="ayat-end-hafalan" class="form-select" aria-label="Pilih ayat akhir"
+                        name="ayat-end-hafalan" required>
+                        <option value="0" selected disabled>Pilih surat terlebih dahulu</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="ket-s" class="form-label">Keterangan (S)</label>
+                  <input type="text" class="form-control" id="ket-s" name="ket-s" required />
+                </div>
+                <div class="mb-3">
+                  <label for="murojaah" class="form-label">Muroja'ah</label>
+                  <input type="text" class="form-control" id="murojaah" name="murojaah" required />
+                </div>
+                <div class="mb-3">
+                  <label for="ket-m" class="form-label">Keterangan (M)</label>
+                  <input type="text" class="form-control" id="ket-m" name="ket-m" required />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="submit-hafalan" class="btn btn-primary ms-auto" type="submit" name="submit-hafalan">Tambah
+                  Hafalan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- akhir modal/edit tambah hafalan -->
+
+      <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl">
+          <div class="row text-center align-items-center">
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+              <ul class="list-inline list-inline-dots mb-0">
+                <li class="list-inline-item">
+                  Copyright &copy; 2023 - PKM-PM
+                  <a class="text-secondary" href="https://janabadra.ac.id/" target="_blank">Universitas Janabadra</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
+  </div>
   </div>
   <!-- Libs JS -->
   <script src="./dist/libs/jquery/jquery-3.7.0.js"></script>
@@ -939,6 +934,12 @@
         ],
         pageLength: 15,
         lengthMenu: [15, 20, 25, 50],
+      });
+
+      $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('.table-responsive table:visible').each(function (e) {
+          $(this).DataTable().columns.adjust().responsive.recalc();
+        });
       });
     });
   </script>

@@ -19,9 +19,13 @@
 <table width="100%">
   <tr>
     <?php if (!is_array($waktu)) { ?>
-      <td width="33%">Bulan : <?= $waktu . ' ' . $tahun ?></td>
+      <td width="33%">Bulan :
+        <?= $waktu . ' ' . $tahun ?>
+      </td>
     <?php } else { ?>
-      <td width="33%">Bulan : <?= $waktu[0] . ' - ' . $waktu[1] . ' ' . $tahun ?></td>
+      <td width="33%">Bulan :
+        <?= $waktu[0] . ' - ' . $waktu[1] . ' ' . $tahun ?>
+      </td>
     <?php } ?>
     <td width="33%" style="text-align: center;">Rumah Tahfidz : Al - Khusna</td>
     <td width="33%" style="text-align: right;">NO : 27</td>
@@ -49,10 +53,10 @@
     <?php $i = 1;
     foreach ($santri as $s) {
       $p = $s['prestasi'];
-      $arRahman  = $p['arRahman'];
+      $arRahman = $p['arRahman'];
       $alWaaqiah = $p['alWaaqiah'];
-      $alMulk    = $p['alMulk'];
-      $Yaasin    = $p['Yaasin'];
+      $alMulk = $p['alMulk'];
+      $Yaasin = $p['Yaasin'];
       $j = $p['Juz30']; ?>
       <tr>
         <td>
@@ -84,5 +88,22 @@
     <?php } ?>
   </tbody>
   <!-- kurang hitungan centang -->
+  
+  <tfoot>
+    <tr>
+      <th class="text-center" colspan="2">Jumlah</th>
+      <th>
+      </th>
+      <th>
+      </th>
+      <th>
+      </th>
+      <th>
+      </th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </tfoot>
 
 </table>
