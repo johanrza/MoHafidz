@@ -101,9 +101,7 @@
                 Light Mode
               </a>
 
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
+
               <a class="dropdown-item" href="<?= base_url('/settings'); ?>">Settings</a>
               <a class="dropdown-item" href="<?= base_url('/logout'); ?>">Logout</a>
             </div>
@@ -194,9 +192,7 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
+
               <a href="<?php echo base_url('./settings'); ?>" class="dropdown-item">Settings</a>
               <a href="<?php echo base_url('./logout'); ?>" class="dropdown-item">Logout</a>
             </div>

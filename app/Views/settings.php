@@ -88,9 +88,7 @@
                 Light Mode
               </a>
 
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
+
               <a href="./settings" class="dropdown-item">Settings</a>
               <a href="/logout" class="dropdown-item">Logout</a>
             </div>
@@ -183,9 +181,7 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
+
               <a href="./settings" class="dropdown-item">Settings</a>
               <a href="/logout" class="dropdown-item">Logout</a>
             </div>

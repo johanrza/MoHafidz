@@ -104,10 +104,6 @@
                 </svg>
                 Light Mode
               </a>
-
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
               <a href="./settings" class="dropdown-item">Settings</a>
               <a href="/logout" class="dropdown-item">Logout</a>
             </div>
@@ -202,9 +198,6 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Status</a>
-              <a href="#" class="dropdown-item">Feedback</a>
-              <div class="dropdown-divider"></div>
               <a href="./settings" class="dropdown-item">Settings</a>
               <a href="/logout" class="dropdown-item">Logout</a>
             </div>
@@ -414,7 +407,7 @@
         autoWidth: false,
         responsive: true,
         order: [
-          [1, 'asc']
+          [0, 'asc']
         ],
         pageLength: 15,
         lengthMenu: [15, 20, 25, 50],

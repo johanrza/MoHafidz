@@ -36,7 +36,7 @@ class Main extends BaseController
 	public function pencarianRekomendasi()
 	{
 		$kata_kunci = $this->request->getVar('kata_kunci');
-		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci))->get()->getResultArray();
+		$pencarian = $this->santriModel->like(array('nama' => $kata_kunci), false, 'after')->get()->getResultArray();
 		if (count($pencarian) >= 1) {
 			return view('index', ['rekomendasi' => $pencarian]);
 		}
