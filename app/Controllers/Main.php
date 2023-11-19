@@ -32,7 +32,6 @@ class Main extends BaseController
 	{
 		return view('wp');
 	}
-
 	public function pencarianRekomendasi()
 	{
 		$kata_kunci = $this->request->getVar('kata_kunci');
@@ -49,7 +48,6 @@ class Main extends BaseController
 		session()->set('pilihan', $cariSantri['nama']);
 		return redirect()->to('pencarianPilihan');
 	}
-
 	public function indexPencarian()
 	{
 		if (session('pilihan') !== null) {
@@ -202,18 +200,22 @@ class Main extends BaseController
 	}
 	public function addHafalan($id_santri)
 	{
+		$cekSelesai = $this->request->getVar('selesai-hafalan');
+		$ayat_akhir = $this->request->getVar('ayat-end-hafalan');
+		if ($cekSelesai !== null) {
+			$ayat_akhir = $cekSelesai;
+		}
 		$this->hafalanModel->save([
-			'id_santri' => $id_santri,
-			'jenis' => $this->request->getVar('jenis-hafalan'),
-			'tanggal' => $this->request->getVar('tanggal-hafalan'),
-			'surat' => $this->request->getVar('surat-hafalan'),
-			'ayat_awal' => $this->request->getVar('ayat-start-hafalan'),
-			'ayat_akhir' => $this->request->getVar('ayat-end-hafalan'),
-			'keterangan_s' => $this->request->getVar('ket-s'),
-			'murojaah' => $this->request->getVar('murojaah'),
-			'keterangan_m' => $this->request->getVar('ket-m')
+			'id_santri' 	=> $id_santri,
+			'jenis' 		=> $this->request->getVar('jenis-hafalan'),
+			'tanggal' 		=> $this->request->getVar('tanggal-hafalan'),
+			'surat' 		=> $this->request->getVar('surat-hafalan'),
+			'ayat_awal' 	=> $this->request->getVar('ayat-start-hafalan'),
+			'ayat_akhir'	=> $ayat_akhir,
+			'keterangan_s'	=> $this->request->getVar('ket-s'),
+			'murojaah' 		=> $this->request->getVar('murojaah'),
+			'keterangan_m' 	=> $this->request->getVar('ket-m')
 		]);
-
 		return redirect()->back();
 	}
 	public function updateHafalan($id_hafalan)
@@ -255,7 +257,7 @@ class Main extends BaseController
 	{
 		$santri = $this->santriModel->findAll();
 		$i = 0;
-		foreach ($santri as $s):
+		foreach ($santri as $s) :
 			$pengajar = $this->pengajarModel->where(array('id_pengajar' => $s['input_oleh']))->get()->getRowArray();
 			$s['input_oleh'] = $pengajar['nama'];
 			$santri[$i] = $s;
@@ -349,7 +351,7 @@ class Main extends BaseController
 		$dataHafalan = $this->hafalanModel->where(array('id_santri' => $id_santri))->get()->getResultArray();
 		// dd($dataHafalan);
 		if ($dataHafalan !== 0) {
-			foreach ($dataHafalan as $h):
+			foreach ($dataHafalan as $h) :
 				$this->hafalanModel->delete($h);
 			endforeach;
 		}
@@ -584,6 +586,7 @@ class Main extends BaseController
 	}
 	public function settingsUpdatePengajar($id_pengajar)
 	{
+		//manage foto
 		$foto = $this->request->getFile('tambah-formFile');
 		if ($foto->getError() == 4) {
 			$namaFoto = $this->request->getVar('ubah-formFoto');
@@ -596,12 +599,16 @@ class Main extends BaseController
 			$foto->move('img', $namaFoto);
 			session()->set('foto', $namaFoto);
 		}
-		$newPassword = $this->request->getVar('new-password-admin');
-		if ($newPassword !== '') {
-			$changePassword = $newPassword;
+		// manage new password
+		$dataPengajar 	= $this->pengajarModel->where(array('id_pengajar' => session('id_pengajar')))->get()->getRowArray();
+		$oldPassword	= $this->request->getVar('password-admin');
+		$newPassword 	= $this->request->getVar('new-password-admin');
+		$verifyPassword = password_verify($oldPassword, $dataPengajar['password']);
+		// dd($verifyPassword);
+		if ($verifyPassword == true) {
+			$changePassword = password_hash($newPassword, PASSWORD_DEFAULT);
 		} else {
-			$ambilData = $this->pengajarModel->where(array('username' => session('username')))->get()->getRowArray();
-			$changePassword = $ambilData['password'];
+			$changePassword = $dataPengajar['password'];
 		}
 		$this->pengajarModel->save([
 			'id_pengajar' => $id_pengajar,
@@ -658,7 +665,7 @@ class Main extends BaseController
 		$this->response->setHeader('Content-Type', 'application/pdf');
 
 		// nama file ketika di save: [namaSantri].pdf
-		$mpdf->Output($data_santri['nama'].'.pdf', 'I');
+		$mpdf->Output($data_santri['nama'] . '.pdf', 'I');
 	}
 	public function generatepdfPrestasi()
 	{
@@ -666,7 +673,6 @@ class Main extends BaseController
 		$locale = 'id_ID';
 		$dateFormat = \IntlDateFormatter::FULL;
 		$dateFormatter = new \IntlDateFormatter($locale, $dateFormat, \IntlDateFormatter::NONE);
-
 
 		$tglAwal = session()->get('tglAwalPDF');
 		$tglAkhir = session()->get('tglAkhirPDF');

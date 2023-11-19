@@ -28,7 +28,8 @@
       </td>
     <?php } ?>
     <td width="33%" style="text-align: center;">Rumah Tahfidz : Al - Khusna</td>
-    <td width="33%" style="text-align: right;">NO : 27</td>
+    <!-- Sementara kosong biar diisi manual -->
+    <td width="33%" style="text-align: right;">NO : </td>
   </tr>
 </table>
 <br>
@@ -66,16 +67,16 @@
           <?= $s['nama']; ?>
         </td>
         <td>
-          <?= ($arRahman['ayat_akhir'] === '78') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir'] . " Ayat" : ''); ?>
+          <?= ($arRahman['ayat_akhir'] === '999') ? "✓" : (($arRahman['ayat_akhir'] !== " ") ? $arRahman['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-          <?= ($alWaaqiah['ayat_akhir'] === '96') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir'] . " Ayat" : ''); ?>
+          <?= ($alWaaqiah['ayat_akhir'] === '999') ? "✓" : (($alWaaqiah['ayat_akhir'] !== " ") ? $alWaaqiah['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-          <?= ($alMulk['ayat_akhir'] === '30') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir'] . " Ayat" : ''); ?>
+          <?= ($alMulk['ayat_akhir'] === '999') ? "✓" : (($alMulk['ayat_akhir'] !== " ") ? $alMulk['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
-          <?= ($Yaasin['ayat_akhir'] === '83') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir'] . " Ayat" : ''); ?>
+          <?= ($Yaasin['ayat_akhir'] === '999') ? "✓" : (($Yaasin['ayat_akhir'] !== " ") ? $Yaasin['ayat_akhir'] . " Ayat" : ''); ?>
         </td>
         <td>
           <?= $j['surat']; ?>
@@ -88,7 +89,7 @@
     <?php } ?>
   </tbody>
   <!-- kurang hitungan centang -->
-  
+
   <tfoot>
     <tr>
       <th class="text-center" colspan="2">Jumlah</th>

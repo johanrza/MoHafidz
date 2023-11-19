@@ -290,7 +290,7 @@
                       </td>
                       <td>
                         <?php $ayat_akhir_arRahman = $arRahman['ayat_akhir'];
-                        if ($ayat_akhir_arRahman === '78') {
+                        if ($ayat_akhir_arRahman === '999') {
                           $R++; // Increment the counter
                           echo "✓";
                         } elseif ($ayat_akhir_arRahman !== " ") {
@@ -301,7 +301,7 @@
                       </td>
                       <td>
                         <?php $ayat_akhir_alWaaqiah = $alWaaqiah['ayat_akhir'];
-                        if ($ayat_akhir_alWaaqiah === '96') {
+                        if ($ayat_akhir_alWaaqiah === '999') {
                           $W++; // Increment the counter
                           echo "✓";
                         } elseif ($ayat_akhir_alWaaqiah !== " ") {
@@ -312,7 +312,7 @@
                       </td>
                       <td>
                         <?php $ayat_akhir_alMulk = $alMulk['ayat_akhir'];
-                        if ($ayat_akhir_alMulk === '30') {
+                        if ($ayat_akhir_alMulk === '999') {
                           $M++; // Increment the counter
                           echo "✓";
                         } elseif ($ayat_akhir_alMulk !== " ") {
@@ -323,7 +323,7 @@
                       </td>
                       <td>
                         <?php $ayat_akhir_Yaasin = $Yaasin['ayat_akhir'];
-                        if ($ayat_akhir_Yaasin === '83') {
+                        if ($ayat_akhir_Yaasin === '999') {
                           $Y++; // Increment the counter
                           echo "✓";
                         } elseif ($ayat_akhir_Yaasin !== " ") {

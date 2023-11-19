@@ -52,13 +52,26 @@
     </tr>
   </thead>
   <tbody>
-    <?php $i=1; 
-    foreach ($data_hafalan as $h) { ?>
+    <?php $i = 1;
+    foreach ($data_hafalan as $h) {
+      $selesai = 'error';
+      if ($h['surat'] == 'Ar-Rahman') {
+        $selesai = '78';
+      }
+      if ($h['surat'] == 'Al-Waaqi\'ah') {
+        $selesai = '96';
+      }
+      if ($h['surat'] == 'Al-Mulk') {
+        $selesai = '30';
+      }
+      if ($h['surat'] == 'Yaasin') {
+        $selesai = '83';
+      } ?>
       <tr>
         <td> <?= $i++ ?> </td>
         <td><?= $h['tanggal'] ?></td>
         <td><?= $h['surat'] ?></td>
-        <td><?= $h['ayat_awal'] ?> - <?= $h['ayat_akhir'] ?></td>
+        <td><?= $h['ayat_awal'] ?> - <?= ($h['ayat_akhir'] == 999) ? $selesai : $h['ayat_akhir'] ?></td>
         <td><?= $h['keterangan_s'] ?></td>
         <td><?= $h['murojaah'] ?></td>
         <td><?= $h['keterangan_m'] ?></td>
