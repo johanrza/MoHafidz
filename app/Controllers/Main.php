@@ -220,15 +220,20 @@ class Main extends BaseController
 	}
 	public function updateHafalan($id_hafalan)
 	{
+		$cekSelesai = $this->request->getVar('selesai-hafalan');
+		$ayat_akhir = $this->request->getVar('ayat-end-hafalan');
+		if ($cekSelesai !== null) {
+			$ayat_akhir = $cekSelesai;
+		}
 		$this->hafalanModel->save([
-			'id_hafalan' => $id_hafalan,
-			'tanggal' => $this->request->getVar('tanggal-hafalan'),
-			'surat' => $this->request->getVar('surat-hafalan'),
-			'ayat_awal' => $this->request->getVar('ayat-start-hafalan'),
-			'ayat_akhir' => $this->request->getVar('ayat-end-hafalan'),
-			'keterangan_s' => $this->request->getVar('ket-s'),
-			'murojaah' => $this->request->getVar('murojaah'),
-			'keterangan_m' => $this->request->getVar('ket-m')
+			'id_hafalan' 	=> $id_hafalan,
+			'tanggal' 		=> $this->request->getVar('tanggal-hafalan'),
+			'surat' 		=> $this->request->getVar('surat-hafalan'),
+			'ayat_awal' 	=> $this->request->getVar('ayat-start-hafalan'),
+			'ayat_akhir' 	=> $ayat_akhir,
+			'keterangan_s' 	=> $this->request->getVar('ket-s'),
+			'murojaah' 		=> $this->request->getVar('murojaah'),
+			'keterangan_m' 	=> $this->request->getVar('ket-m')
 		]);
 
 		return redirect()->back();
